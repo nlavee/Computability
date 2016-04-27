@@ -7,6 +7,8 @@ import java.util.Date;
 import java.util.HashSet;
 import java.util.function.BinaryOperator;
 
+import org.apache.log4j.Logger;
+
 import main.java.project.beans.Clause;
 import main.java.project.beans.ClauseCollection;
 import main.java.project.beans.Item;
@@ -15,10 +17,9 @@ import main.java.project.beans.Literal;
 import main.java.project.beans.SubsetSum;
 
 public class Implementation {
+	
 	public Implementation()
-	{
-
-	}
+	{}
 
 	public static ClauseCollection reduce3SATTo1In3SAT(ClauseCollection ThreeSATInstance)
 	{
@@ -302,34 +303,69 @@ public class Implementation {
 
 	public static void main(String[] args)
 	{
+		Logger LOGGER = Logger.getLogger(Implementation.class);
+		
 		//		ClauseCollection ThreeSAT = InstanceGenerator.get3SAT();
 		//		System.out.println(ThreeSAT);
 		//		System.out.println();
 		//		System.out.println(reduce3SATTo1In3SAT(ThreeSAT));
 		//		System.out.println();
 		//		System.out.println(reduce1In3SATToSubsetSum(reduce3SATTo1In3SAT(ThreeSAT))); // TODO: too big, tweaking with clauses size right now 
-		for(int i = 0; i < 20; i++)
+		for(int i = 0; i < 10000; i++)
 		{
 			Knapsack knapsack = InstanceGenerator.getKnapsack();
-			System.out.println(knapsack);
-			long startTime = System.nanoTime();
-			System.out.println("O(nW): \t\t\t\t\t" + dynamicProgrammingKnapsack(knapsack));
-			long endTime = System.nanoTime();
-			System.out.println("Running time: " + (endTime - startTime)/1000000 + " ms");
-			System.out.println();
+//			System.out.println(knapsack);
+			LOGGER.info(knapsack);
+			try{
+				long startTime = System.nanoTime();
+				int res = dynamicProgrammingKnapsack(knapsack);
+//				System.out.println("O(nW): \t\t\t\t\t" + res);
+				LOGGER.info("O(nW): " + res);
+				
+				long endTime = System.nanoTime();
+//				System.out.println("Running time: " + (endTime - startTime)/1000000 + " ms");
+				LOGGER.info("Running time: " + (endTime - startTime)/1000000 + " ms");
+//				System.out.println();
+			}
+			catch( Throwable t)
+			{
+//				System.out.println("Something went wrong with the DP");
+				LOGGER.info("Something went wrong with the DP");
+			}
 
-			startTime = System.nanoTime();
-			System.out.println("O(n^2 * v(aMax)): \t\t\t" + dynamicProgrammingKnapsackMinCost(knapsack));
-			endTime = System.nanoTime();
-			System.out.println("Running time: " + (endTime - startTime)/1000000 + " ms");
-			System.out.println();
+			try{
+				long startTime = System.nanoTime();
+				int res = dynamicProgrammingKnapsackMinCost(knapsack);
+//				System.out.println("O(n^2 * v(aMax)): \t\t\t" + res);
+				LOGGER.info("O(n^2 * v(aMax)): " + res);
+				
+				long endTime = System.nanoTime();
+//				System.out.println("Running time: " + (endTime - startTime)/1000000 + " ms");
+				LOGGER.info("Running time: " + (endTime - startTime)/1000000 + " ms");
+//				System.out.println();
+			}
+			catch( Throwable t)
+			{
+//				System.out.println("Something went wrong with the DP Min Cost");
+				LOGGER.info("Something went wrong with the DP Min Cost");
+			}
 
-			startTime = System.nanoTime();
-			System.out.println("Greedy: \t\t\t\t" + greedyKnapsack(knapsack));
-			endTime = System.nanoTime();
-			System.out.println("Running time: " + (endTime - startTime)/1000000 + " ms");
-			System.out.println();
-			System.out.println("--------------------------------------------");
+			try{
+				long startTime = System.nanoTime();
+				int res = greedyKnapsack(knapsack);
+//				System.out.println("Greedy: \t\t\t\t" + res);
+				LOGGER.info("Greedy: " + res);
+				long endTime = System.nanoTime();
+//				System.out.println("Running time: " + (endTime - startTime)/1000000 + " ms");
+				LOGGER.info("Running time: " + (endTime - startTime)/1000000 + " ms");
+//				System.out.println();
+			}
+			catch( Throwable t)
+			{
+//				System.out.println("Something went wrong with the Greedy Knapsack");
+				LOGGER.info("Something went wrong with the Greedy Knapsack");
+			}
+//			System.out.println("--------------------------------------------");
 		}
 	}
 }
