@@ -21,6 +21,11 @@ public class Implementation {
 	public Implementation()
 	{}
 
+	/**
+	 * Method that reduce 3SAT to 1in3SAT.
+	 * @param ThreeSATInstance
+	 * @return
+	 */
 	public static ClauseCollection reduce3SATTo1In3SAT(ClauseCollection ThreeSATInstance)
 	{
 		ArrayList<Clause> res = new ArrayList<Clause>();
@@ -68,6 +73,11 @@ public class Implementation {
 		return new ClauseCollection(res, literalCount);
 	}
 
+	/**
+	 * Method that reduce 1 in 3 sat into an instance of SubsetSum.
+	 * @param OneInThreeSAT
+	 * @return
+	 */
 	public static SubsetSum reduce1In3SATToSubsetSum(ClauseCollection OneInThreeSAT)
 	{
 		int literalCount = OneInThreeSAT.getLiteralCount();
@@ -110,6 +120,11 @@ public class Implementation {
 		return ss;
 	}
 
+	/**
+	 * dynamic programming for knapsack algorithm
+	 * @param knapsack
+	 * @return
+	 */
 	public static int dynamicProgrammingKnapsack(Knapsack knapsack)
 	{
 		int numItem = knapsack.getNumItem();
@@ -244,11 +259,18 @@ public class Implementation {
 		return res;
 	}
 
+	/**
+	 * Greedy algorithm for knapsack
+	 * @param knapsack
+	 * @return
+	 */
 	public static int greedyKnapsack(Knapsack knapsack)
 	{
 		ArrayList<Item> G = new ArrayList<Item>();
 
 		knapsack.getItemList();
+		
+		// sort based on custom comparator that does based on value/cost
 		Collections.sort(knapsack.getItemList(), new Implementation(). new CustomComparator());
 		//		for(Item item : knapsack.getItemList())
 		//		{
@@ -277,6 +299,7 @@ public class Implementation {
 		int aMax = 0;
 		for(Item item : knapsack.getItemList())
 		{
+			// if cost > budget, we cannot take it as well
 			if(item.getValue() > aMax && item.getCost() <= knapsack.getBudget()) aMax = (int) item.getValue();
 		}
 
@@ -313,6 +336,7 @@ public class Implementation {
 		//		System.out.println(reduce1In3SATToSubsetSum(reduce3SATTo1In3SAT(ThreeSAT))); // TODO: too big, tweaking with clauses size right now 
 		for(int i = 0; i < 10000; i++)
 		{
+			LOGGER.info("Count: " + (i+1));
 			Knapsack knapsack = InstanceGenerator.getKnapsack();
 //			System.out.println(knapsack);
 			LOGGER.info(knapsack);
