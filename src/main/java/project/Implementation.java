@@ -1,11 +1,11 @@
 package main.java.project;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Collections;
 import java.util.Comparator;
 import java.util.Date;
 import java.util.HashSet;
-import java.util.function.BinaryOperator;
 
 import org.apache.log4j.Logger;
 
@@ -17,7 +17,7 @@ import main.java.project.beans.Literal;
 import main.java.project.beans.SubsetSum;
 
 public class Implementation {
-	
+
 	public Implementation()
 	{}
 
@@ -82,42 +82,56 @@ public class Implementation {
 	{
 		int literalCount = OneInThreeSAT.getLiteralCount();
 		ArrayList<Clause> clauses = OneInThreeSAT.getClauses();
-		ArrayList<Integer> subsetSumItems = new ArrayList<Integer>();
+		ArrayList<Long> subsetSumItems = new ArrayList<Long>();
+
+		int nPlusM = literalCount + clauses.size();
 
 		for(int i = 0 ; i < literalCount; i++)
 		{
-			int weNeed = (int) Math.pow(2, i);
+			// create 2 elements, set to be 0
+			int[] v = new int[nPlusM];
+			int[] vPrime = new int[nPlusM];
+
+			// set ith digit of both to be one
+			v[i] = 1;
+			vPrime[i] = 1;
+
 			for(int j = 0 ; j < clauses.size(); j ++)
 			{
 				Clause clause = clauses.get(j);
-				if(clause.getLiteral(0).getId() == i || clause.getLiteral(1).getId() == i || clause.getLiteral(2).getId() == i)
+				Literal toCheck = new Literal(i);
+				if(clause.containsLiteral(toCheck))
 				{
-					boolean isNegated = false;
-					if((clause.getLiteral(0).getId() == i && clause.getLiteral(0).isNegate()) ||
-							(clause.getLiteral(1).getId() == i && clause.getLiteral(1).isNegate()) ||
-							(clause.getLiteral(2).getId() == i && clause.getLiteral(2).isNegate()) )
-					{
-						isNegated = !isNegated;
-					}
-					int weNeed2 = weNeed + (int) Math.pow(2, j);
-					subsetSumItems.add(weNeed);
-					subsetSumItems.add(weNeed2);
+					v[literalCount + j] = 1;
 				}
+				else
+				{
+					toCheck.negate();
+					if(clause.containsLiteral(toCheck))
+					{
+						vPrime[literalCount + j] = 1;
+					}
+				}	
 			}
+			StringBuilder st = new StringBuilder();
+			for(int ele : v) st.append(ele);
+			Long vInt = Long.parseLong(st.toString(), 2);
 
+			st = new StringBuilder();
+			for(int ele : vPrime) st.append(ele);
+			Long vPrimeInt = Long.parseLong(st.toString(), 2);
+
+			subsetSumItems.add(vInt);
+			subsetSumItems.add(vPrimeInt);
 		}
-		StringBuilder forT = new StringBuilder();
-		for(int i = 0 ; i < literalCount + clauses.size(); i++)
-		{
-			forT.append('1');
-		}
-		System.out.println(forT);
-		System.out.println(forT.toString().length());
-		Long T = Long.parseLong(forT.toString(), 2);
+		System.out.println(subsetSumItems);
 
-		SubsetSum ss = new SubsetSum(subsetSumItems, T);
+		StringBuilder st = new StringBuilder();
+		for(int i = 0 ; i < nPlusM; i++) st.append("1");
+		Long T = Long.parseLong(st.toString(), 2);
 
-		return ss;
+		System.out.println(T);
+		return null;
 	}
 
 	/**
@@ -165,13 +179,10 @@ public class Implementation {
 		int target = (int) knapsack.getTarget();
 
 		// calculate aMax
-		int aMax = 0;
-		for(Item item : knapsack.getItemList())
-		{
-			if(item.getValue() > aMax) aMax = (int) item.getValue();
-		}
+		int aMax = calculateAMax(knapsack);
 
 		int[][] minCost = new int[numItem][numItem * aMax + 1];
+
 		for(int i = 0 ; i < minCost.length; i++)
 		{
 			for(int j = 0 ; j < minCost[i].length; j++)
@@ -181,6 +192,15 @@ public class Implementation {
 		}
 		boolean[][] take = new boolean[numItem][numItem * aMax + 1];
 
+		solveMaximumKnapsack(knapsack, minCost, take, aMax, numItem, budget);
+
+		int optimalValue = constructMaxKnapsackSolution(knapsack, minCost, take, aMax, numItem, budget);
+		return optimalValue;
+	}
+
+	private static void solveMaximumKnapsack(Knapsack knapsack,
+			int[][] minCost, boolean[][] take, int aMax, int numItem, int budget) {
+		
 		// when target is 0, there's no cost
 		for(int i = 0; i < numItem; i++)
 		{
@@ -218,9 +238,6 @@ public class Implementation {
 				}
 			}
 		}
-
-		int optimalValue = constructMaxKnapsackSolution(knapsack, minCost, take, aMax, numItem, budget);
-		return optimalValue;
 	}
 
 	private static int constructMaxKnapsackSolution(Knapsack knapsack, int[][] minCost, boolean[][] take, int aMax, int numItem, int budget) {
@@ -268,8 +285,6 @@ public class Implementation {
 	{
 		ArrayList<Item> G = new ArrayList<Item>();
 
-		knapsack.getItemList();
-		
 		// sort based on custom comparator that does based on value/cost
 		Collections.sort(knapsack.getItemList(), new Implementation(). new CustomComparator());
 		//		for(Item item : knapsack.getItemList())
@@ -312,6 +327,54 @@ public class Implementation {
 		return aMax > currSum? aMax : currSum;
 	}
 
+	public static int knapsackApproxScheme(Knapsack knapsack, double scaleFactor)
+	{
+		ArrayList<Item> itemList = knapsack.getItemList();
+		ArrayList<Item> scaled = new ArrayList<Item>();
+		int numItem = knapsack.getNumItem();
+		int budget = (int) knapsack.getBudget();
+		
+		for(Item item : itemList)
+		{
+			Item newItem = new Item();
+			newItem.setValue(Math.floor(item.getValue() / scaleFactor));
+			newItem.setCost(item.getCost());
+			scaled.add(newItem);
+		}
+
+		Knapsack newInstance = new Knapsack();
+		newInstance.setItemList(scaled);
+		newInstance.setBudget(knapsack.getBudget());
+		newInstance.setTarget(knapsack.getTarget());
+		int aMax = calculateAMax(newInstance);
+
+		int[][] minCost = new int[numItem][numItem * aMax + 1];
+
+		for(int i = 0 ; i < minCost.length; i++)
+		{
+			for(int j = 0 ; j < minCost[i].length; j++)
+			{
+				minCost[i][j] = Integer.MAX_VALUE;
+			}
+		}
+		boolean[][] take = new boolean[numItem][numItem * aMax + 1];
+		
+		solveMaximumKnapsack(newInstance, minCost, take, aMax, numItem, budget);
+
+//		aMax = calculateAMax(knapsack);
+		int optimalValue = constructMaxKnapsackSolution(newInstance, minCost, take, aMax, numItem, budget);
+		return (int) (optimalValue * scaleFactor);
+	}
+
+	private static int calculateAMax(Knapsack knapsack)
+	{
+		int aMax = 0;
+		for(Item item : knapsack.getItemList())
+		{
+			if(item.getValue() > aMax) aMax = (int) item.getValue();
+		}
+		return aMax;
+	}
 	/**
 	 * Custom comparator. This is for descending sort.
 	 * @author AnhVuNguyen
@@ -327,69 +390,107 @@ public class Implementation {
 	public static void main(String[] args)
 	{
 		Logger LOGGER = Logger.getLogger(Implementation.class);
-		
-		//		ClauseCollection ThreeSAT = InstanceGenerator.get3SAT();
-		//		System.out.println(ThreeSAT);
-		//		System.out.println();
-		//		System.out.println(reduce3SATTo1In3SAT(ThreeSAT));
-		//		System.out.println();
-		//		System.out.println(reduce1In3SATToSubsetSum(reduce3SATTo1In3SAT(ThreeSAT))); // TODO: too big, tweaking with clauses size right now 
-		for(int i = 0; i < 10000; i++)
+
+		ClauseCollection ThreeSAT = InstanceGenerator.get3SAT();
+		System.out.println(ThreeSAT);
+		System.out.println();
+		System.out.println(reduce3SATTo1In3SAT(ThreeSAT));
+		System.out.println();
+		System.out.println(reduce1In3SATToSubsetSum(reduce3SATTo1In3SAT(ThreeSAT))); // TODO: too big, tweaking with clauses size right now
+
+
+		boolean testingKnapsack = false;
+		if(testingKnapsack)
 		{
-			LOGGER.info("Count: " + (i+1));
-			Knapsack knapsack = InstanceGenerator.getKnapsack();
-//			System.out.println(knapsack);
-			LOGGER.info(knapsack);
-			try{
-				long startTime = System.nanoTime();
-				int res = dynamicProgrammingKnapsack(knapsack);
-//				System.out.println("O(nW): \t\t\t\t\t" + res);
-				LOGGER.info("O(nW): " + res);
-				
-				long endTime = System.nanoTime();
-//				System.out.println("Running time: " + (endTime - startTime)/1000000 + " ms");
-				LOGGER.info("Running time: " + (endTime - startTime)/1000000 + " ms");
-//				System.out.println();
-			}
-			catch( Throwable t)
+			for(int i = 0; i < 15000; i++)
 			{
-//				System.out.println("Something went wrong with the DP");
-				LOGGER.info("Something went wrong with the DP");
-			}
+				LOGGER.info("Count: " + (i+1));
+				Knapsack knapsack = InstanceGenerator.getKnapsack();
+				//			System.out.println(knapsack);
+				//LOGGER.info(knapsack);
+				try{
+					long startTime = System.nanoTime();
+					int res = dynamicProgrammingKnapsack(knapsack);
+					//				System.out.println("O(nW): \t\t\t\t\t" + res);
+					LOGGER.info("O(nW): " + res);
 
-			try{
-				long startTime = System.nanoTime();
-				int res = dynamicProgrammingKnapsackMinCost(knapsack);
-//				System.out.println("O(n^2 * v(aMax)): \t\t\t" + res);
-				LOGGER.info("O(n^2 * v(aMax)): " + res);
-				
-				long endTime = System.nanoTime();
-//				System.out.println("Running time: " + (endTime - startTime)/1000000 + " ms");
-				LOGGER.info("Running time: " + (endTime - startTime)/1000000 + " ms");
-//				System.out.println();
-			}
-			catch( Throwable t)
-			{
-//				System.out.println("Something went wrong with the DP Min Cost");
-				LOGGER.info("Something went wrong with the DP Min Cost");
-			}
+					long endTime = System.nanoTime();
+					//				System.out.println("Running time: " + (endTime - startTime)/1000000 + " ms");
+					LOGGER.info("Running time: " + (endTime - startTime)/1000000.0 + " ms");
+					//				System.out.println();
+				}
+				catch( Throwable t)
+				{
+					//				System.out.println("Something went wrong with the DP");
+					//LOGGER.info("Something went wrong with the DP", t);
+					LOGGER.info("O(nW): NA");
+					LOGGER.info("Running time: NA");
+					t.printStackTrace();
+				}
 
-			try{
-				long startTime = System.nanoTime();
-				int res = greedyKnapsack(knapsack);
-//				System.out.println("Greedy: \t\t\t\t" + res);
-				LOGGER.info("Greedy: " + res);
-				long endTime = System.nanoTime();
-//				System.out.println("Running time: " + (endTime - startTime)/1000000 + " ms");
-				LOGGER.info("Running time: " + (endTime - startTime)/1000000 + " ms");
-//				System.out.println();
+				try{
+					long startTime = System.nanoTime();
+					int res = dynamicProgrammingKnapsackMinCost(knapsack);
+					//				System.out.println("O(n^2 * v(aMax)): \t\t\t" + res);
+					LOGGER.info("O(n^2 * v(aMax)): " + res);
+
+					long endTime = System.nanoTime();
+					//				System.out.println("Running time: " + (endTime - startTime)/1000000 + " ms");
+					LOGGER.info("Running time: " + (endTime - startTime)/1000000.0 + " ms");
+					//				System.out.println();
+				}
+				catch( Throwable t)
+				{
+					//				System.out.println("Something went wrong with the DP Min Cost");
+					//LOGGER.info("Something went wrong with the DP Min Cost", t);
+					LOGGER.info("O(n^2 * v(aMax)): NA");
+					LOGGER.info("Running time: NA");
+					t.printStackTrace();
+				}
+
+				try{
+					long startTime = System.nanoTime();
+					int res = greedyKnapsack(knapsack);
+					//				System.out.println("Greedy: \t\t\t\t" + res);
+					LOGGER.info("Greedy: " + res);
+					long endTime = System.nanoTime();
+					//				System.out.println("Running time: " + (endTime - startTime)/1000000 + " ms");
+					LOGGER.info("Running time: " + (endTime - startTime)/1000000.0 + " ms");
+					//				System.out.println();
+				}
+				catch( Throwable t)
+				{
+					//				System.out.println("Something went wrong with the Greedy Knapsack");
+					//LOGGER.info("Something went wrong with the Greedy Knapsack", t);
+					LOGGER.info("Greedy: NA");
+					LOGGER.info("Running time: NA");
+					t.printStackTrace();
+				}
+
+				try{
+					double aMax = calculateAMax(knapsack);
+					int itemNo = knapsack.getNumItem();
+					double ep = 0.5;
+					double scaleFactor = ep * ( aMax / itemNo);
+
+					long startTime = System.nanoTime();
+					int res = knapsackApproxScheme(knapsack, scaleFactor);
+					//				System.out.println("FPTAS: \t\t\t\t" + res);
+					LOGGER.info("FPTAS: " + res);
+					long endTime = System.nanoTime();
+					//				System.out.println("Running time: " + (endTime - startTime)/1000000 + " ms");
+					LOGGER.info("Running time: " + (endTime - startTime)/1000000.0 + " ms");
+					//				System.out.println();
+				}
+				catch( Throwable t)
+				{
+					//				System.out.println("Something went wrong with the Greedy Knapsack");
+					//LOGGER.info("Something went wrong with the FPTAS Knapsack", t);
+					LOGGER.info("FPTAS: NA");
+					LOGGER.info("Running time: NA");
+					t.printStackTrace();
+				}
 			}
-			catch( Throwable t)
-			{
-//				System.out.println("Something went wrong with the Greedy Knapsack");
-				LOGGER.info("Something went wrong with the Greedy Knapsack");
-			}
-//			System.out.println("--------------------------------------------");
 		}
 	}
 }

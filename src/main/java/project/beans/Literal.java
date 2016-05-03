@@ -10,6 +10,11 @@ public class Literal {
 		this.value = value;
 	}
 	
+	public Literal(int id) {
+		super();
+		this.id = id;
+	}
+	
 	public Literal() {
 	}
 
@@ -27,10 +32,6 @@ public class Literal {
 	
 	public void negate() {
 		isNegate = !isNegate;
-	}
-	
-	public boolean logicalAnd( Literal b ) {
-		return Boolean.logicalAnd(value, b.getValue());
 	}
 	
 	public boolean isNegate()

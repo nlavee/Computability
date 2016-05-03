@@ -35,6 +35,18 @@ public class Clause {
 		return null;
 	}
 
+	public boolean containsLiteral(Literal l)
+	{
+		for(Literal lit : construct)
+		{
+			if(l.getId() == lit.getId() && (l.isNegate() && lit.isNegate()))
+			{
+				return true;
+			}
+		}
+		return false;
+	}
+	
 	@Override
 	public String toString() {
 		return "Clause [construct=" + construct + ", size=" + size + "]\n";
