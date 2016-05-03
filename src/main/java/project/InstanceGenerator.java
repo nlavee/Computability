@@ -53,7 +53,7 @@ public class InstanceGenerator {
 		ArrayList<Literal> literalList = new ArrayList<Literal>();
 		Random rand = new Random();
 		//int size = rand.nextInt();
-		int size = 1;
+		int size = 100;
 		
 		// arraylist to hold all clauses
 		ArrayList<Clause> clauses = new ArrayList<Clause>();

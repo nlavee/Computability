@@ -49,7 +49,7 @@ public class Literal {
 
 	@Override
 	public String toString() {
-		return "Literal [value=" + value + ", isNegate=" + isNegate + ", id=" + id + "]";
+		return "Literal [value=" + value + ", Negate=" + isNegate + ", id=" + id + "]";
 	}
 	
 	

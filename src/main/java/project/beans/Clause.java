@@ -49,7 +49,7 @@ public class Clause {
 	
 	@Override
 	public String toString() {
-		return "Clause [construct=" + construct + ", size=" + size + "]\n";
+		return "Clause [" + construct + ", size=" + size + "]\n";
 	}
 	
 	

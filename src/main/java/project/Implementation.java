@@ -18,8 +18,7 @@ import main.java.project.beans.SubsetSum;
 
 public class Implementation {
 
-	public Implementation()
-	{}
+	public Implementation() {}
 
 	/**
 	 * Method that reduce 3SAT to 1in3SAT.
@@ -134,15 +133,20 @@ public class Implementation {
 		return new SubsetSum(subsetSumItems, T);
 	}
 
+	/**
+	 * Method to reduce an instance of subset sum into knapsack
+	 * @param ss
+	 * @return
+	 */
 	public static Knapsack reduceSubsetSumToKnapsack(SubsetSum ss)
 	{
 		Knapsack knapsack = new Knapsack();
-		
+
 		knapsack.setBudget(ss.getTarget());
 		knapsack.setTarget(ss.getTarget());
-		
+
 		ArrayList<Item> itemListKS = new ArrayList<Item>();
-		
+
 		ArrayList<Long> itemSet = ss.getSet();
 		for(Long l : itemSet)
 		{
@@ -151,11 +155,11 @@ public class Implementation {
 			i.setValue(l);
 			knapsack.addItem(i);
 		}
-		
-		
+
+
 		return knapsack;
 	}
-	
+
 	/**
 	 * dynamic programming for knapsack algorithm
 	 * @param knapsack
@@ -222,7 +226,7 @@ public class Implementation {
 
 	private static void solveMaximumKnapsack(Knapsack knapsack,
 			int[][] minCost, boolean[][] take, int aMax, int numItem, int budget) {
-		
+
 		// when target is 0, there's no cost
 		for(int i = 0; i < numItem; i++)
 		{
@@ -355,7 +359,7 @@ public class Implementation {
 		ArrayList<Item> scaled = new ArrayList<Item>();
 		int numItem = knapsack.getNumItem();
 		int budget = (int) knapsack.getBudget();
-		
+
 		for(Item item : itemList)
 		{
 			Item newItem = new Item();
@@ -380,10 +384,10 @@ public class Implementation {
 			}
 		}
 		boolean[][] take = new boolean[numItem][numItem * aMax + 1];
-		
+
 		solveMaximumKnapsack(newInstance, minCost, take, aMax, numItem, budget);
 
-//		aMax = calculateAMax(knapsack);
+		//		aMax = calculateAMax(knapsack);
 		int optimalValue = constructMaxKnapsackSolution(newInstance, minCost, take, aMax, numItem, budget);
 		return (int) (optimalValue * scaleFactor);
 	}
@@ -397,6 +401,7 @@ public class Implementation {
 		}
 		return aMax;
 	}
+	
 	/**
 	 * Custom comparator. This is for descending sort.
 	 * @author AnhVuNguyen
@@ -413,23 +418,30 @@ public class Implementation {
 	{
 		Logger LOGGER = Logger.getLogger(Implementation.class);
 
-		ClauseCollection ThreeSAT = InstanceGenerator.get3SAT();
-		System.out.println(ThreeSAT);
-		System.out.println();
-		System.out.println(reduce3SATTo1In3SAT(ThreeSAT));
-		System.out.println();
-		System.out.println(reduce1In3SATToSubsetSum(reduce3SATTo1In3SAT(ThreeSAT))); // TODO: too big, tweaking with clauses size right now
-		SubsetSum ss = reduce1In3SATToSubsetSum(reduce3SATTo1In3SAT(ThreeSAT));
-		Knapsack ks = reduceSubsetSumToKnapsack(ss);
-		System.out.println();
-		System.out.println(ks);
-		System.out.println();
-		System.out.println(dynamicProgrammingKnapsack(ks));
+		boolean testing3SAT = true;
+		if(testing3SAT)
+		{
+			//for(int i = 0 ; i < 100; i++)
+			//{
+				ClauseCollection ThreeSAT = InstanceGenerator.get3SAT();
+				System.out.println(ThreeSAT);
+				System.out.println();
+				System.out.println(reduce3SATTo1In3SAT(ThreeSAT));
+				System.out.println();
+				System.out.println(reduce1In3SATToSubsetSum(reduce3SATTo1In3SAT(ThreeSAT))); // TODO: too big, tweaking with clauses size right now
+				SubsetSum ss = reduce1In3SATToSubsetSum(reduce3SATTo1In3SAT(ThreeSAT));
+				Knapsack ks = reduceSubsetSumToKnapsack(ss);
+				System.out.println();
+				System.out.println(ks);
+				System.out.println();
+				System.out.println(dynamicProgrammingKnapsack(ks));
+			//}
+		}
 
 		boolean testingKnapsack = false;
 		if(testingKnapsack)
 		{
-			for(int i = 0; i < 15000; i++)
+			for(int i = 0; i < 100; i++)
 			{
 				LOGGER.info("Count: " + (i+1));
 				Knapsack knapsack = InstanceGenerator.getKnapsack();
