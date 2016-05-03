@@ -2,7 +2,7 @@ import csv
 
 f = open('/Users/AnhVuNguyen/Desktop/Computability.log', 'r')
 
-csvfile = open('/Users/AnhVuNguyen/Documents/workspace/ComputabilityComplexityAndHeuristics/res.csv', 'wb')
+csvfile = open('/Users/AnhVuNguyen/Documents/workspace/ComputabilityComplexityAndHeuristics/data/res.csv', 'wb')
 fieldnames = ['count', 'DP1 Value', 'DP1 Running Time', 'DP2 Value', 'DP2 Running Time', 'Greedy Value', 'Greedy Running Time', 'FPTAS Value', 'FPTAS Running Time']
 writer = csv.DictWriter(csvfile, fieldnames=fieldnames)
 writer.writeheader()

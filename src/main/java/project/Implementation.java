@@ -130,10 +130,32 @@ public class Implementation {
 		for(int i = 0 ; i < nPlusM; i++) st.append("1");
 		Long T = Long.parseLong(st.toString(), 2);
 
-		System.out.println(T);
-		return null;
+		//System.out.println(T);
+		return new SubsetSum(subsetSumItems, T);
 	}
 
+	public static Knapsack reduceSubsetSumToKnapsack(SubsetSum ss)
+	{
+		Knapsack knapsack = new Knapsack();
+		
+		knapsack.setBudget(ss.getTarget());
+		knapsack.setTarget(ss.getTarget());
+		
+		ArrayList<Item> itemListKS = new ArrayList<Item>();
+		
+		ArrayList<Long> itemSet = ss.getSet();
+		for(Long l : itemSet)
+		{
+			Item i = new Item();
+			i.setCost(l);
+			i.setValue(l);
+			knapsack.addItem(i);
+		}
+		
+		
+		return knapsack;
+	}
+	
 	/**
 	 * dynamic programming for knapsack algorithm
 	 * @param knapsack
@@ -397,7 +419,12 @@ public class Implementation {
 		System.out.println(reduce3SATTo1In3SAT(ThreeSAT));
 		System.out.println();
 		System.out.println(reduce1In3SATToSubsetSum(reduce3SATTo1In3SAT(ThreeSAT))); // TODO: too big, tweaking with clauses size right now
-
+		SubsetSum ss = reduce1In3SATToSubsetSum(reduce3SATTo1In3SAT(ThreeSAT));
+		Knapsack ks = reduceSubsetSumToKnapsack(ss);
+		System.out.println();
+		System.out.println(ks);
+		System.out.println();
+		System.out.println(dynamicProgrammingKnapsack(ks));
 
 		boolean testingKnapsack = false;
 		if(testingKnapsack)
