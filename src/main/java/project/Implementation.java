@@ -1,5 +1,7 @@
 package main.java.project;
 
+import java.awt.Desktop;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collections;
@@ -40,7 +42,7 @@ public class Implementation {
 			Clause newClause = new Clause();
 			Literal newFirstLiteral = new Literal();
 			newFirstLiteral.setId(firstLiteral.getId());
-			newFirstLiteral.negate();
+			if(!firstLiteral.isNegate())newFirstLiteral.negate();
 			Literal a = new Literal();
 			a.setId(literalCount++);
 			Literal b = new Literal();
@@ -63,7 +65,7 @@ public class Implementation {
 			d.setId(literalCount++);
 			Literal newThirdLiteral = new Literal();
 			newThirdLiteral.setId(thirdLiteral.getId());
-			newThirdLiteral.negate();
+			if(!thirdLiteral.isNegate()) newThirdLiteral.negate();
 			newClause.addLiteral(c);
 			newClause.addLiteral(newThirdLiteral);
 			newClause.addLiteral(d);
@@ -401,7 +403,7 @@ public class Implementation {
 		}
 		return aMax;
 	}
-	
+
 	/**
 	 * Custom comparator. This is for descending sort.
 	 * @author AnhVuNguyen
@@ -423,18 +425,18 @@ public class Implementation {
 		{
 			//for(int i = 0 ; i < 100; i++)
 			//{
-				ClauseCollection ThreeSAT = InstanceGenerator.get3SAT();
-				System.out.println(ThreeSAT);
-				System.out.println();
-				System.out.println(reduce3SATTo1In3SAT(ThreeSAT));
-				System.out.println();
-				System.out.println(reduce1In3SATToSubsetSum(reduce3SATTo1In3SAT(ThreeSAT))); // TODO: too big, tweaking with clauses size right now
-				SubsetSum ss = reduce1In3SATToSubsetSum(reduce3SATTo1In3SAT(ThreeSAT));
-				Knapsack ks = reduceSubsetSumToKnapsack(ss);
-				System.out.println();
-				System.out.println(ks);
-				System.out.println();
-				System.out.println(dynamicProgrammingKnapsack(ks));
+			ClauseCollection ThreeSAT = InstanceGenerator.get3SAT();
+			System.out.println(ThreeSAT);
+			System.out.println();
+			System.out.println(reduce3SATTo1In3SAT(ThreeSAT));
+			System.out.println();
+			System.out.println(reduce1In3SATToSubsetSum(reduce3SATTo1In3SAT(ThreeSAT))); // TODO: too big, tweaking with clauses size right now
+			SubsetSum ss = reduce1In3SATToSubsetSum(reduce3SATTo1In3SAT(ThreeSAT));
+			Knapsack ks = reduceSubsetSumToKnapsack(ss);
+			System.out.println();
+			System.out.println(ks);
+			System.out.println();
+			System.out.println(dynamicProgrammingKnapsack(ks));
 			//}
 		}
 
@@ -529,6 +531,20 @@ public class Implementation {
 					LOGGER.info("Running time: NA");
 					t.printStackTrace();
 				}
+			}
+		}
+
+		
+		boolean runningSimulation = false;
+		if(runningSimulation)
+		{
+			// automate running Python script to parse log into csv.
+			String cmd = "python scripts/extractDataFromLog.py";
+			try {
+				Runtime.getRuntime().exec(cmd);
+				System.out.println("Parsed log into csv");
+			} catch (IOException e) {
+				System.out.println("Cannot run python script");
 			}
 		}
 	}

@@ -5,4 +5,26 @@ date: "April 26, 2016"
 output: pdf_document
 ---
 
-So far, some what I can see, the results does not seem to differ that much for Knapsack?!
+# Introduction #  
+
+Throughout the semester, we have gone through different reductions and different way to solve Knapsack problem in reasonable time. This experiments aim to display the differences quantitatively in terms of algorithms' result as well as running time.  
+
+There are two parts to this experiment:
+
+1. A general assessment of the four algorithms implemented to solve Maximum Knapsack problem.  
+2. Assessment on experiment using 100 large random instances of Maximum Knapsack.  
+3. Assessment on experiment involving 100 large random instances of 3SAT, which are reduced into Subset Sum, and solved using alogirthms for Maximum Knapsack problem.  
+
+
+# The Four Algorithms for Maximum Knapsack #
+
+The four algorithsm being implemented to solve Maximum Knapsack problem are summarized as follow:  
+
+1. 
+2. 
+3. 
+4. 
+
+
+## Assessment of Maximum Knapsack Algorithms ##  
+

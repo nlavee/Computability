@@ -1,12 +1,16 @@
 import csv
 
-f = open('/Users/AnhVuNguyen/Desktop/Computability.log', 'r')
+## Read from log file
+f = open('/Users/AnhVuNguyen/Documents/workspace/ComputabilityComplexityAndHeuristics/log/Computability.log', 'r')
 
+## Write to csv file
 csvfile = open('/Users/AnhVuNguyen/Documents/workspace/ComputabilityComplexityAndHeuristics/data/res.csv', 'wb')
+## Write headers
 fieldnames = ['count', 'DP1 Value', 'DP1 Running Time', 'DP2 Value', 'DP2 Running Time', 'Greedy Value', 'Greedy Running Time', 'FPTAS Value', 'FPTAS Running Time']
 writer = csv.DictWriter(csvfile, fieldnames=fieldnames)
 writer.writeheader()
 
+## Read all lines
 lines = f.readlines()
 for i in range(0, len(lines)):
         line = lines[i]
