@@ -4,30 +4,30 @@ import java.util.ArrayList;
 
 public class SubsetSum {
 
-	ArrayList<Long> set = null;
-	Long target = null;
+	ArrayList<Double> set = null;
+	Double target = null;
 	
 	public SubsetSum() {
 	}
 
-	public SubsetSum(ArrayList<Long> subsetSumItems, Long target) {
+	public SubsetSum(ArrayList<Double> subsetSumItems, Double target) {
 		this.set = subsetSumItems;
 		this.target = target;
 	}
 
-	public ArrayList<Long> getSet() {
+	public ArrayList<Double> getSet() {
 		return set;
 	}
 
-	public void setSet(ArrayList<Long> set) {
+	public void setSet(ArrayList<Double> set) {
 		this.set = set;
 	}
 
-	public Long getTarget() {
+	public Double getTarget() {
 		return target;
 	}
 
-	public void setTarget(Long target) {
+	public void setTarget(Double target) {
 		this.target = target;
 	}
 

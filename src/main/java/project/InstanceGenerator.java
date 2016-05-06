@@ -22,8 +22,8 @@ public class InstanceGenerator {
 		Knapsack knapsack = new Knapsack();
 		Random rand = new Random();
 		
-		// set arbitrary limit of 100 items
-		int sizeItemList = rand.nextInt(100);
+		// set arbitrary limit of 200 items
+		int sizeItemList = rand.nextInt(200);
 		// set arbitrary bound of 1000 for value and cost
 		int maxItemValue = rand.nextInt(1000);
 		int maxItemCost = rand.nextInt(1000);
@@ -53,7 +53,7 @@ public class InstanceGenerator {
 		ArrayList<Literal> literalList = new ArrayList<Literal>();
 		Random rand = new Random();
 		//int size = rand.nextInt();
-		int size = 100;
+		int size = 5; // number of clauses
 		
 		// arraylist to hold all clauses
 		ArrayList<Clause> clauses = new ArrayList<Clause>();

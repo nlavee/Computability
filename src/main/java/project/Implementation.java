@@ -83,7 +83,7 @@ public class Implementation {
 	{
 		int literalCount = OneInThreeSAT.getLiteralCount();
 		ArrayList<Clause> clauses = OneInThreeSAT.getClauses();
-		ArrayList<Long> subsetSumItems = new ArrayList<Long>();
+		ArrayList<Double> subsetSumItems = new ArrayList<>();
 
 		int nPlusM = literalCount + clauses.size();
 
@@ -115,12 +115,31 @@ public class Implementation {
 				}	
 			}
 			StringBuilder st = new StringBuilder();
-			for(int ele : v) st.append(ele);
-			Long vInt = Long.parseLong(st.toString(), 2);
+			for(int a = 0 ; a < v.length; a ++)
+			{
+				int ele = v[a];
+				if(a == v.length / 10)
+				{
+					st.append(".");
+				}
+				st.append(ele);
+			}
+			//			st.append(".0");
+			//for(int ele : v) st.append(ele);
+			Double vInt = Double.parseDouble(st.toString());
 
 			st = new StringBuilder();
-			for(int ele : vPrime) st.append(ele);
-			Long vPrimeInt = Long.parseLong(st.toString(), 2);
+			for(int a = 0 ; a < vPrime.length; a ++)
+			{
+				int ele = vPrime[a];
+				if(a == vPrime.length / 10)
+				{
+					st.append(".");
+				}
+				st.append(ele);
+			}
+			//			st.append(".0");
+			Double vPrimeInt = Double.parseDouble(st.toString());
 
 			subsetSumItems.add(vInt);
 			subsetSumItems.add(vPrimeInt);
@@ -128,8 +147,17 @@ public class Implementation {
 		System.out.println(subsetSumItems);
 
 		StringBuilder st = new StringBuilder();
-		for(int i = 0 ; i < nPlusM; i++) st.append("1");
-		Long T = Long.parseLong(st.toString(), 2);
+		for(int i = 0 ; i < nPlusM; i++) 
+		{
+			if(i == nPlusM / 10)
+			{
+				st.append(".");
+			}
+			st.append("1");
+
+		}
+		//		st.append(".0");
+		Double T = Double.parseDouble(st.toString());
 
 		//System.out.println(T);
 		return new SubsetSum(subsetSumItems, T);
@@ -149,8 +177,8 @@ public class Implementation {
 
 		ArrayList<Item> itemListKS = new ArrayList<Item>();
 
-		ArrayList<Long> itemSet = ss.getSet();
-		for(Long l : itemSet)
+		ArrayList<Double> itemSet = ss.getSet();
+		for(Double l : itemSet)
 		{
 			Item i = new Item();
 			i.setCost(l);
@@ -418,9 +446,10 @@ public class Implementation {
 
 	public static void main(String[] args)
 	{
+		// NEED THIS TO GENERATE LOG AS RAW DATA
 		Logger LOGGER = Logger.getLogger(Implementation.class);
 
-		boolean testing3SAT = true;
+		boolean testing3SAT = false;
 		if(testing3SAT)
 		{
 			//for(int i = 0 ; i < 100; i++)
@@ -436,7 +465,10 @@ public class Implementation {
 			System.out.println();
 			System.out.println(ks);
 			System.out.println();
-			System.out.println(dynamicProgrammingKnapsack(ks));
+			System.out.println("DP1: " + dynamicProgrammingKnapsack(ks));
+			System.out.println("DP2: " + dynamicProgrammingKnapsackMinCost(ks));
+			System.out.println("Greedy: " + greedyKnapsack(ks));
+			System.out.println("FPTAS: " + knapsackApproxScheme(ks, 2));
 			//}
 		}
 
@@ -534,7 +566,13 @@ public class Implementation {
 			}
 		}
 
-		
+		/* 
+		 * NOTE ON AUTOMATION:
+		 * 1. If we're actually runnning simulation that generates log to be parsed, 
+		 * 		set runningSimulation = true
+		 * 2. If it's on Vu's laptop, set vuMachine to true to open Data Analysis R script
+		 * 		in Rstudio
+		 */
 		boolean runningSimulation = false;
 		if(runningSimulation)
 		{
@@ -542,9 +580,16 @@ public class Implementation {
 			String cmd = "python scripts/extractDataFromLog.py";
 			try {
 				Runtime.getRuntime().exec(cmd);
-				System.out.println("Parsed log into csv");
+				System.out.println("Parsed log into csv.");
+
+				boolean vuMachine = false;
+				if(vuMachine)
+				{
+					String openRStudio = "open -a RStudio Report/DataAnalysis.R";
+					Runtime.getRuntime().exec(openRStudio);
+				}
 			} catch (IOException e) {
-				System.out.println("Cannot run python script");
+				System.out.println("Cannot run python script or open RStudio.");
 			}
 		}
 	}
