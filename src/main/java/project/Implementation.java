@@ -432,6 +432,18 @@ public class Implementation {
 		return aMax;
 	}
 
+	private static boolean decide01Knapsack(Knapsack knapsack, int algorithm)
+	{
+		double returnedFromMaxProblem = -1;
+		if(algorithm == 1) returnedFromMaxProblem = dynamicProgrammingKnapsack(knapsack);
+		if(algorithm == 2) returnedFromMaxProblem = dynamicProgrammingKnapsackMinCost(knapsack);
+		if(algorithm == 3) returnedFromMaxProblem = greedyKnapsack(knapsack);
+		if(algorithm == 4) returnedFromMaxProblem = knapsackApproxScheme(knapsack, 2);
+		
+		if(returnedFromMaxProblem >= knapsack.getTarget()) return true;
+		else return false;
+	}
+	
 	/**
 	 * Custom comparator. This is for descending sort.
 	 * @author AnhVuNguyen
@@ -449,7 +461,7 @@ public class Implementation {
 		// NEED THIS TO GENERATE LOG AS RAW DATA
 		Logger LOGGER = Logger.getLogger(Implementation.class);
 
-		boolean testing3SAT = false;
+		boolean testing3SAT = true;
 		if(testing3SAT)
 		{
 			//for(int i = 0 ; i < 100; i++)
@@ -466,9 +478,13 @@ public class Implementation {
 			System.out.println(ks);
 			System.out.println();
 			System.out.println("DP1: " + dynamicProgrammingKnapsack(ks));
+			System.out.println("DP1 Decide: " + decide01Knapsack(ks, 1));
 			System.out.println("DP2: " + dynamicProgrammingKnapsackMinCost(ks));
+			System.out.println("DP2 Decide: " + decide01Knapsack(ks, 2));
 			System.out.println("Greedy: " + greedyKnapsack(ks));
+			System.out.println("Greedy Decide: " + decide01Knapsack(ks, 3));
 			System.out.println("FPTAS: " + knapsackApproxScheme(ks, 2));
+			System.out.println("FPTAS Decide: " + decide01Knapsack(ks, 4));
 			//}
 		}
 
