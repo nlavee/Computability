@@ -33,5 +33,20 @@ public class Item {
 		return "Item [value=" + value + ", cost=" + cost + "]";
 	}
 	
-	
+	 @Override
+	    public boolean equals(Object object)
+	    {
+	        boolean isSame = false;
+
+	        if (object != null && object instanceof Item)
+	        {
+	        	Item objectItem = (Item) object;
+	        	
+	        	// item equals to another if value and cost are the same
+	            isSame = (this.value == objectItem.getValue()) && 
+	            		(this.cost == objectItem.getCost());
+	        }
+
+	        return isSame;
+	    }
 }
