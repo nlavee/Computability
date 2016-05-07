@@ -32,6 +32,11 @@ public class Knapsack {
 
 	public void setItemList(ArrayList<Item> itemList) {
 		this.itemList = itemList;
+		for(Item i : itemList)
+		{
+			sum += i.getValue();
+			cost += i.getCost();
+		}
 	}
 
 	public double getBudget() {

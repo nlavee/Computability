@@ -1,4 +1,4 @@
-library(ggplot2); library(stringr); library(gridExtra); library(pastecs)
+library(ggplot2); library(stringr); library(gridExtra); library(pastecs); library(dplyr)
 
 removeMS <- function(x)
 {
@@ -51,3 +51,31 @@ ggplot(KnapsackRes) +
   geom_density(aes(FPTAS.Running.Time, colour = "FPTAS.Running.Time")) +
   xlab("Running Time") + 
   xlim(0, 10)
+
+## Values
+valuesDP1 <- KnapsackRes %>% select(count, DP1.Value)
+valuesDP2 <- KnapsackRes %>% select(count, DP2.Value)
+valuesGreedy <- KnapsackRes %>% select(count, Greedy.Value)
+valuesFPTAS <- KnapsackRes %>% select(count, FPTAS.Value)
+
+ggplot() + 
+  geom_point(data = valuesDP1, aes(count, DP1.Value, shape = "DP1", colour = "DP1")) + 
+  geom_smooth(data = valuesDP1, aes(count, DP1.Value, colour = "DP1")) + 
+  geom_point(data = valuesDP2, aes(count, DP2.Value, shape = "DP2", colour = "DP2")) + 
+  geom_smooth(data = valuesDP2, aes(count, DP2.Value, colour = "DP2")) + 
+  geom_point(data = valuesGreedy, aes(count, Greedy.Value, shape = "Greedy", colour = "Greedy")) + 
+  geom_smooth(data = valuesGreedy, aes(count, Greedy.Value, colour = "Greedy")) + 
+  geom_point(data = valuesFPTAS, aes(count, FPTAS.Value, shape = "FPTAS", colour = "FPTAS")) + 
+  geom_smooth(data = valuesFPTAS, aes(count, FPTAS.Value, colour = "FPTAS"))
+
+
+ggplot() + 
+  geom_point(data = KnapsackRes, aes(count, DP1.Value, shape = "DP1", colour = "DP1")) + 
+  geom_smooth(data = KnapsackRes, aes(count, DP1.Value, colour = "DP1")) + 
+  geom_point(data = KnapsackRes, aes(count, DP2.Value, shape = "DP2", colour = "DP2")) + 
+  geom_smooth(data = KnapsackRes, aes(count, DP2.Value, colour = "DP2")) + 
+  geom_point(data = KnapsackRes, aes(count, Greedy.Value, shape = "Greedy", colour = "Greedy")) + 
+  geom_smooth(data = valuesGreedy, aes(count, Greedy.Value, colour = "Greedy")) + 
+  geom_point(data = valuesFPTAS, aes(count, FPTAS.Value, shape = "FPTAS", colour = "FPTAS")) + 
+  geom_smooth(data = valuesFPTAS, aes(count, FPTAS.Value, colour = "FPTAS"))
+

@@ -5,6 +5,7 @@ date: "April 26, 2016"
 output: pdf_document
 ---
 ```{r, echo=FALSE, message=FALSE, results='hide', warning=FALSE}
+## Load required packages & data file
 library(ggplot2); library(stringr); library(gridExtra); library(pastecs)
 load(file="KnapsackRes.RData")
 ```
@@ -42,9 +43,12 @@ Using this constraints, I also limit the range of Maximum Knapsack problem prese
 
 Each instances solved using the four algorithms for solving Maximum Knapsack. The results (maximum value returned) as well as running time from each algorithm is logged into a text file (can be found in log folder of this project). I also wrote a simple Python script (can be found in scripts folder of this project) to parse this log file into a csv file for statistical analysis with R. This report as well as all the graphs are generated using R.
 
-## Reductions ##  
+## Reductions For 3SAT ##  
 For this experiment, I set up 100 instances of 3SAT. Each instance is then reduced to 1in3SAT, which is then subsequently reduced into Subset Sum and Knapsack respectively.  
 
+Since the program is written in Java, where number is constrained to 64-bits, there is a limit to how many clauses and variables I can have in 3SAT instances. This is due to the way we performed our reduction. When reduced from 3SAT to 1in3SAT, we know that the number of clauses will triple, and for each clause will introduce four new literals as well. When we reduce 1in3SAT, the total number of literals and clauses makes up the target for Subset Sum. Therefore, I have instances where we either exceed Java Heap Space while doing the reduction, or we ran out of number (and loop back to negative number, which breaks the algorithm). Therefore, there's first a need to perform a check on the maximum number of clauses 3SAT instances can have. Since the assignment of literals in clauses is randomized in my algorithms, I do not have control on this for now. After testing with several instances, I decide to limit the number of clauses to 6 clauses. This is also due to the way that I implement the reduction, which originally use integer, using double. I standardized the process so that we would always have double. An example is as follow:  
+
+If we have the item for subset originally as {100100, 100000, 010010, 010001} and a target of 111111, this would introduce .0 when dealing with double. To avoid this, I could scale the instances into the following {100.100, 100.000, 010.010, 010.001} and a target of 111.111. The results would be the same as before, but we deal with much smaller numbers.  
 
 # The Four Algorithms for Maximum Knapsack #
 The expectation for the four algorithsm being implemented to solve Maximum Knapsack problem are summarized as follow: 
@@ -56,7 +60,46 @@ The expectation for the four algorithsm being implemented to solve Maximum Knaps
 
 
 ## Assessment of Maximum Knapsack Algorithms ##  
-### Maximum Values Returned ###
+### Maximum Knapsack Returned Values ###
+
+**Values Returned from DP1**
+```{r, echo=FALSE, message=FALSE}
+summary(KnapsackRes$DP1.Value)
+```
+
+**Values Returned from DP2**
+```{r, echo=FALSE, message=FALSE}
+summary(KnapsackRes$DP2.Value)
+```
+
+**Values Returned from Greedy**
+```{r, echo=FALSE, message=FALSE}
+summary(KnapsackRes$Greedy.Value)
+```
+
+**Values Returned from FPTAS**
+```{r, echo=FALSE, message=FALSE}
+summary(KnapsackRes$FPTAS.Value)
+```
+  
+Below is the graph plotting the returned values for each instances. The color indicates which algorithms is being used. At the same time, there's a trend line indicating the trend of values for each algorithm. 
+
+```{r, echo=FALSE, message=FALSE}
+ggplot() + 
+  geom_point(data = KnapsackRes, aes(count, DP1.Value, shape = "DP1", colour = "DP1")) + 
+  geom_smooth(data = KnapsackRes, aes(count, DP1.Value, colour = "DP1")) + 
+  geom_point(data = KnapsackRes, aes(count, DP2.Value, shape = "DP2", colour = "DP2")) + 
+  geom_smooth(data = KnapsackRes, aes(count, DP2.Value, colour = "DP2")) + 
+  geom_point(data = KnapsackRes, aes(count, Greedy.Value, shape = "Greedy", colour = "Greedy")) + 
+  geom_smooth(data = KnapsackRes, aes(count, Greedy.Value, colour = "Greedy")) + 
+  geom_point(data = KnapsackRes, aes(count, FPTAS.Value, shape = "FPTAS", colour = "FPTAS")) + 
+  geom_smooth(data = KnapsackRes, aes(count, FPTAS.Value, colour = "FPTAS")) + 
+  xlab("Instances") + 
+  ylab("Values Returned") + 
+  labs(title = "Values returned from different Knapsack Algorithms", colour = "Algorithms", shape = "Algorithms")
+```
+
+From the graph, we hardly see any differences in the values returned from the four different algorithms. The greedy algorithm seems to have the highest values returned, while DP2 returned the lowest. We cannot see the trend lines for DP1 as it is likely to be overlapped by another line. 
 
 ### Running Time ###  
 
@@ -64,31 +107,35 @@ The following captures the general statistics of the running time of different a
 
 **DP1 Running Time**
 ```{r, echo=FALSE, message=FALSE}
-stat.desc(KnapsackRes$DP1.Running.Time, basic = F, norm = F)
+summary(KnapsackRes$DP1.Running.Time)
 ```
 
 **DP2 Running Time**
 ```{r, echo=FALSE, message=FALSE}
-stat.desc(KnapsackRes$DP2.Running.Time, basic = F, norm = F)
+summary(KnapsackRes$DP2.Running.Time)
 ```
 
 **Greedy Running Time**
 ```{r, echo=FALSE, message=FALSE}
-stat.desc(KnapsackRes$Greedy.Running.Time, basic = F, norm = F)
+summary(KnapsackRes$Greedy.Running.Time)
 ```
 
 **FPTAS Running Time**
 ```{r, echo=FALSE, message=FALSE}
-stat.desc(KnapsackRes$FPTAS.Running.Time, basic = F, norm = F)
+summary(KnapsackRes$FPTAS.Running.Time)
 ```
 
 Below is the graphs of running time for different instances. There is a smooth line to indicate the general trend of all the instances. Noticing the difference on the y-axis, which indicates the running time in millisecond (ms), we can see that Greedy runs in the range below 3ms while DP2 runs in the range 2000ms, or 2 seconds. FPTAS seems to have a higher upper bound for running time compared to DP1. FPTAS and DP2 graphs are very similar, despite the differences in scale on the y-axis. This is somewhat expected as FPTAS implements DP2 as part of its algorithm. From this graph alone, we would expect that Greedy would have the best running time.   
 
 ```{r, echo=FALSE, message=FALSE}
-dp1_rt <- ggplot(KnapsackRes, aes(count, DP1.Running.Time)) + geom_point() + geom_smooth()
-dp2_rt <- ggplot(KnapsackRes, aes(count, DP2.Running.Time)) + geom_point() + geom_smooth()
-greedy_rt <- ggplot(KnapsackRes, aes(count, Greedy.Running.Time)) + geom_point() + geom_smooth()
-fptas_rt <- ggplot(KnapsackRes, aes(count, FPTAS.Running.Time)) + geom_point() + geom_smooth()
+dp1_rt <- ggplot(KnapsackRes, aes(count, DP1.Running.Time)) + geom_point() + geom_smooth() + 
+  labs(title = "Running time for DP1", x = "Instances", y = "Running Time (ms)")
+dp2_rt <- ggplot(KnapsackRes, aes(count, DP2.Running.Time)) + geom_point() + geom_smooth() + 
+  labs(title = "Running time for DP2", x = "Instances", y = "Running Time (ms)")
+greedy_rt <- ggplot(KnapsackRes, aes(count, Greedy.Running.Time)) + geom_point() + geom_smooth() + 
+  labs(title = "Running time for Greedy", x = "Instances", y = "Running Time (ms)")
+fptas_rt <- ggplot(KnapsackRes, aes(count, FPTAS.Running.Time)) + geom_point() + geom_smooth() + 
+  labs(title = "Running time for FPTAS", x = "Instances", y = "Running Time (ms)")
 grid.arrange(dp1_rt, dp2_rt, greedy_rt, fptas_rt)
 ```
 
@@ -101,9 +148,30 @@ ggplot(KnapsackRes) +
   geom_density(aes(DP2.Running.Time, colour="DP2.Running.Time")) + 
   geom_density(aes(Greedy.Running.Time, colour="Greedy.Running.Time")) + 
   geom_density(aes(FPTAS.Running.Time, colour = "FPTAS.Running.Time")) +
-  xlab("Running Time") + 
-  xlim(0, 15)
+  xlab("Running Time (ms)") + 
+  xlim(0, 15) + 
+  labs(title ="Running time for different algorithms", colour = "Algorithms")
 ```
 
-From the graph, we can see clearly that Greedy stands out as having the most of it running time in the lower spectrum of the graphs. This aligns with our expectation that this wud have the best running time. DP1 running time at the same time does not span as much as the DP2 and FPTAS. 
+From the graph, we can see clearly that Greedy stands out as having the most of it running time in the lower spectrum of the graphs. This aligns with our expectation that this would have the best running time. DP1 running time at the same time does not span as much as the DP2 and FPTAS. 
+
+# Reduction For 3SAT #
+
+This analysis is focused on running time for the following sequence of actions: 
+
+1. Reduce 3SAT into 1in3SAT.
+2. Reduce 1in3SAT into Subset Sum.
+3. Reduce Subset Sum into 0-1Knapsack
+4. Solve 0-1Knapsack using values returned from the four algorithms with Maximum Knapsack. 
+
+# Improvements For Experiments #
+There are definitely rooms for improvements with this experiments that I could have done in order to yield better comparison. 
+
+Firstly, I could have increased the sample size from 100 to 1000, which should give us a better understanding regarding the values and running time. However, due to the circumstances of limited time frame to conduct this experiment, the limit of 100 instances in each experiment should be sufficient to give us a survey into our investigations.  
+
+Secondly, we could have implemented the same algorithms in different languages such as Python and C. By taking the average of the same algorithm in three different languages, it would help us get a running time that is pseudo language-agnostic. The average for this number can be compared in the same manner in order to get the differences between different algorithms.
+
+
+# Conclusion #
+
 
