@@ -36,7 +36,7 @@ public class ClauseCollection {
 
 	@Override
 	public String toString() {
-		return "ClauseCollection \n[clauses=" + clauses + "\nliteralCount="
+		return "ClauseCollection \n[clauses=\n" + clauses + "\nliteralCount="
 				+ literalCount + "]";
 	}
 	

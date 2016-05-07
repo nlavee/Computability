@@ -89,7 +89,7 @@ public class Implementation {
 
 		int subsetSumDiv = (int) Math.ceil(nPlusM / 5);
 		ArrayList<SubsetSum> subsetSumSubset = new ArrayList<>();
-		
+
 		for(int i = 0 ; i < literalCount; i++)
 		{
 			// create 2 elements, set to be 0
@@ -120,29 +120,29 @@ public class Implementation {
 			StringBuilder st = new StringBuilder();
 			for(int a = 0 ; a < v.length; a ++)
 			{
-//				if(a == v.length / 15)
-//				{
-//					//					System.out.println("Decimal at : " + a);
-//					st.append(".");
-//				}
+				//				if(a == v.length / 15)
+				//				{
+				//					//					System.out.println("Decimal at : " + a);
+				//					st.append(".");
+				//				}
 				if(a >= literalCount) st.append(v[a]);
 			}
 			//			st.append(".0");
 			//for(int ele : v) st.append(ele);
-//			System.out.println(st.toString());
+			System.out.println(st.toString());
 			Double vDouble = Double.parseDouble(st.toString());
 
 			st = new StringBuilder();
 			for(int a = 0 ; a < vPrime.length; a ++)
 			{
-//				if(a == vPrime.length / 15)
-//				{
-//					//					System.out.println("Decimal at : " + a);
-//					st.append(".");
-//				}
+				//				if(a == vPrime.length / 15)
+				//				{
+				//					//					System.out.println("Decimal at : " + a);
+				//					st.append(".");
+				//				}
 				if(a >= literalCount) st.append(vPrime[a]);
 			}
-//			System.out.println(st.toString());
+			System.out.println(st.toString());
 			//			st.append(".0");
 			Double vPrimeDouble = Double.parseDouble(st.toString());
 
@@ -156,18 +156,18 @@ public class Implementation {
 		StringBuilder st = new StringBuilder();
 		for(int i = 0 ; i < clauses.size(); i++) 
 		{
-//			if(i == nPlusM / 15)
-//			{
-//				//				System.out.println("Decimal at : " + i);
-//				st.append(".");
-//			}
+			//			if(i == nPlusM / 15)
+			//			{
+			//				//				System.out.println("Decimal at : " + i);
+			//				st.append(".");
+			//			}
 			st.append("1");
 
 		}
 		//		st.append(".0");
-//		System.out.println(st.toString()+ "\nTarget ^ ");
-//		System.out.println();
-//		System.out.println(subsetSumItems);
+		System.out.println(st.toString()+ "\nTarget ^ ");
+		System.out.println();
+		//		System.out.println(subsetSumItems);
 		Double T = Double.parseDouble(st.toString());
 		//		System.out.println("nPlusM: " + nPlusM);
 		//System.out.println(T);
@@ -204,7 +204,7 @@ public class Implementation {
 	 * @param knapsack
 	 * @return
 	 */
-	public static int dynamicProgrammingKnapsack(Knapsack knapsack)
+	public static double dynamicProgrammingKnapsack(Knapsack knapsack)
 	{
 		ArrayList<Item> itemTaken = new ArrayList<>();
 		return dynamicProgrammingKnapsack(knapsack, itemTaken);
@@ -216,12 +216,12 @@ public class Implementation {
 	 * @param knapsack
 	 * @return
 	 */
-	public static int dynamicProgrammingKnapsack(Knapsack knapsack, ArrayList<Item> itemTaken)
+	public static double dynamicProgrammingKnapsack(Knapsack knapsack, ArrayList<Item> itemTaken)
 	{
 		int numItem = knapsack.getNumItem();
 		int budget = (int) knapsack.getBudget();
 
-		int[][] table = new int[numItem+1][budget+1];
+		double[][] table = new double[numItem+1][budget+1];
 
 		// Java intialize all int to be at 0
 		//		for(int i = 0; i <= numItem; i ++)
@@ -247,30 +247,36 @@ public class Implementation {
 				else
 				{
 					table[i][b] = Math.max(
-							table[i+1][b-(int) item.getCost()] + (int) item.getValue(), 
+							table[i+1][b-(int) item.getCost()] + item.getValue(), 
 							table[i+1][b]);
 				}
 			}
 		}
 
 		// print the table for double check
-//				for(int i = 0 ; i < table.length; i++)
-//				{
-//					for(int j = 0 ; j < table[i].length; j++)
-//					{
-//						System.out.print( table[i][j] + " ");
-//					}
-//					System.out.println();
-//				}
+		//				for(int i = 0 ; i < table.length; i++)
+		//				{
+		//					for(int j = 0 ; j < table[i].length; j++)
+		//					{
+		//						System.out.print( table[i][j] + " ");
+		//					}
+		//					System.out.println();
+		//				}
 		getItemList(table, itemTaken, knapsack);
 
 		return table[0][budget];
 	}
 
-	private static void getItemList(int[][] table, ArrayList<Item> itemTaken, Knapsack ks) {
+	/**
+	 * Method to get back item chosen for dynamic programming knapsack O(nW)
+	 * @param table
+	 * @param itemTaken
+	 * @param ks
+	 */
+	private static void getItemList(double[][] table, ArrayList<Item> itemTaken, Knapsack ks) {
 		int i = 0;
 		int k = table[0].length-1;
-		
+
 		while(i < table.length-1 && k >=0)
 		{
 			if(table[i][k] != table[i+1][k])
@@ -287,17 +293,27 @@ public class Implementation {
 		}
 	}
 
-	public static int dynamicProgrammingKnapsackMinCost(Knapsack knapsack)
+	/**
+	 * Method for calculating Knapsack only return the value
+	 * @param knapsack
+	 * @return
+	 */
+	public static double dynamicProgrammingKnapsackMinCost(Knapsack knapsack)
 	{
 		ArrayList<Item> itemTaken = new ArrayList<>();
-		return dynamicProgrammingKnapsack(knapsack, itemTaken);
+		return dynamicProgrammingKnapsackMinCost(knapsack, itemTaken);
 	}
-	
-	public static int dynamicProgrammingKnapsackMinCost(Knapsack knapsack, ArrayList<Item> itemTaken)
+
+	/**
+	 * Method for calculating Knapsack, does keep track of item that are chosen that can retrieved
+	 * @param knapsack
+	 * @param itemTaken
+	 * @return
+	 */
+	public static double dynamicProgrammingKnapsackMinCost(Knapsack knapsack, ArrayList<Item> itemTaken)
 	{
 		int numItem = knapsack.getNumItem();
-		int budget = (int) knapsack.getBudget();
-		int target = (int) knapsack.getTarget();
+		double budget = knapsack.getBudget();
 
 		ArrayList<Item> list = knapsack.getItemList();
 		Collections.sort(list, new Implementation(). new ItemComparatorCost());
@@ -305,10 +321,10 @@ public class Implementation {
 		knapsack.setItemList(list);
 
 		// calculate aMax
-		int aMax = calculateAMax(knapsack);
+		double aMax = calculateAMax(knapsack);
 
 		// making sure that we get to an value where even all item combined, we cannot get that value
-		int[][] minCost = new int[numItem][numItem * aMax + 1];
+		double[][] minCost = new double[numItem][(int) (numItem * aMax + 1)];
 
 		for(int i = 0 ; i < minCost.length; i++)
 		{
@@ -319,7 +335,7 @@ public class Implementation {
 		}
 
 		// making sure that we get to an value where even all item combined, we cannot get that value
-		boolean[][] take = new boolean[numItem][numItem * aMax + 1];
+		boolean[][] take = new boolean[numItem][(int) (numItem * aMax + 1)];
 
 		solveMaximumKnapsack(knapsack, minCost, take, aMax, numItem, budget);
 
@@ -336,8 +352,17 @@ public class Implementation {
 		return optimalValue;
 	}
 
+	/**
+	 * Method that actually solve Knapsack for the MinCost approach
+	 * @param knapsack
+	 * @param minCost
+	 * @param take
+	 * @param aMax
+	 * @param numItem
+	 * @param budget
+	 */
 	private static void solveMaximumKnapsack(Knapsack knapsack,
-			int[][] minCost, boolean[][] take, int aMax, int numItem, int budget) {
+			double[][] minCost, boolean[][] take, double aMax, int numItem, double budget) {
 
 		// when target is 0, there's no cost
 		//		for(int i = 0; i < numItem; i++)
@@ -349,7 +374,7 @@ public class Implementation {
 		for(int t = 1; t <= knapsack.getItem(0).getValue(); t++)
 		{
 			// changed from 1 to 0, due to us being in zero-based
-			minCost[0][t] = (int) knapsack.getItem(0).getCost();
+			minCost[0][t] = knapsack.getItem(0).getCost();
 			take[0][t] = true;
 		}
 
@@ -372,7 +397,7 @@ public class Implementation {
 				}
 				else // include i
 				{
-					minCost[i][t] = (int) (knapsack.getItem(i).getCost() + minCost[i-1][nextT]);
+					minCost[i][t] = (knapsack.getItem(i).getCost() + minCost[i-1][nextT]);
 					take[i][t] = true;
 				}
 			}
@@ -387,9 +412,21 @@ public class Implementation {
 		//		}
 	}
 
-	private static int constructMaxKnapsackSolution(Knapsack knapsack, int[][] minCost, boolean[][] take, 
-			int aMax, int numItem, int budget, ArrayList<Item> itemTaken) {
-		int optimalValue = numItem * aMax;
+	/**
+	 * Method that construct Knapsack solution for the MinCost approach, also keep track of 
+	 * items that are chosen.
+	 * @param knapsack
+	 * @param minCost
+	 * @param take
+	 * @param aMax
+	 * @param numItem
+	 * @param budget
+	 * @param itemTaken
+	 * @return
+	 */
+	private static int constructMaxKnapsackSolution(Knapsack knapsack, double[][] minCost, boolean[][] take, 
+			double aMax, int numItem, double budget, ArrayList<Item> itemTaken) {
+		int optimalValue = (int) (numItem * aMax);
 
 		//		System.out.println(minCost[numItem-1][optimalValue]);
 		while(optimalValue > 0 && minCost[numItem-1][optimalValue] > budget)
@@ -398,7 +435,7 @@ public class Implementation {
 		}
 
 		// intialize solution to be empty
-		
+
 		int i = numItem-1;
 		int t = optimalValue;
 		//		System.out.println(knapsack.getItemList().size());
@@ -422,18 +459,23 @@ public class Implementation {
 		return res;
 	}
 
-	public static int greedyKnapsack(Knapsack knapsack)
+	/**
+	 * Method to solve Knapsack based on Greedy 2-Approx Approach. Does not return item taken
+	 * @param knapsack
+	 * @return
+	 */
+	public static double greedyKnapsack(Knapsack knapsack)
 	{
 		ArrayList<Item> itemTake = new ArrayList<>();
 		return greedyKnapsack(knapsack, itemTake);
 	}
-	
+
 	/**
-	 * Greedy algorithm for knapsack
+	 * Greedy algorithm for knapsack, keep track of item taken 
 	 * @param knapsack
 	 * @return
 	 */
-	public static int greedyKnapsack(Knapsack knapsack, ArrayList<Item> itemTake)
+	public static double greedyKnapsack(Knapsack knapsack, ArrayList<Item> itemTake)
 	{
 		// sort based on custom comparator that does based on value/cost
 		Collections.sort(knapsack.getItemList(), new Implementation(). new CustomComparator());
@@ -443,17 +485,25 @@ public class Implementation {
 		//			System.out.println(item.getValue()/item.getCost());
 		//		}
 
-		int L = (int) knapsack.getBudget();
+		double L = knapsack.getBudget();
 
+		//System.out.println(knapsack.getItemList());
 		for(Item item : knapsack.getItemList())
 		{
 			//			System.out.println(item.getValue() / item.getCost());
 			if(L > 0)
 			{
-				if(item.getCost() <= L)
+				if(item.getCost() <= L )
 				{
-					itemTake.add(item);
-					L -= item.getCost();
+					if(item.getCost() == 0.0 && item.getValue() == 0.0)
+					{
+
+					}
+					else
+					{
+						itemTake.add(item);
+						L -= item.getCost();
+					}
 				}
 			}
 			else
@@ -462,35 +512,48 @@ public class Implementation {
 			}
 		}
 
-		int aMax = 0;
+		double aMax = 0;
 		for(Item item : knapsack.getItemList())
 		{
 			// if cost > budget, we cannot take it as well
-			if(item.getValue() > aMax && item.getCost() <= knapsack.getBudget()) aMax = (int) item.getValue();
+			if(item.getValue() > aMax && item.getCost() <= knapsack.getBudget()) aMax = item.getValue();
 		}
 
 		int currSum = 0;
 		for(Item item : itemTake)
 		{
-			currSum += (int) item.getValue();
+			currSum += item.getValue();
 		}
 
 		return aMax > currSum? aMax : currSum;
 	}
-
-	public static int knapsackApproxScheme(Knapsack knapsack, double scaleFactor)
+	
+	/**
+	 * Method for fully polynomial time approximation scheme, does not return item taken 
+	 * @param knapsack
+	 * @param scaleFactor
+	 * @return
+	 */
+	public static double knapsackApproxScheme(Knapsack knapsack, double scaleFactor)
 	{
 		ArrayList<Item> itemTaken = new ArrayList<Item>();
 		return knapsackApproxScheme(knapsack, scaleFactor, itemTaken);
 	}
-	
-	public static int knapsackApproxScheme(Knapsack knapsack, double scaleFactor, ArrayList<Item> itemTaken)
+
+	/**
+	 * Method for fully polynomial time approximation scheme, keep track of item taken
+	 * @param knapsack
+	 * @param scaleFactor
+	 * @param itemTaken
+	 * @return
+	 */
+	public static double knapsackApproxScheme(Knapsack knapsack, double scaleFactor, ArrayList<Item> itemTaken)
 	{
 		ArrayList<Item> itemList = knapsack.getItemList();
 		ArrayList<Item> scaled = new ArrayList<Item>();
 
 		int numItem = knapsack.getNumItem();
-		int budget = (int) knapsack.getBudget();
+		double budget = knapsack.getBudget();
 
 		for(Item item : itemList)
 		{
@@ -506,10 +569,10 @@ public class Implementation {
 		newInstance.setTarget(knapsack.getTarget());
 
 		// Start solving use scaled item
-		int aMax = calculateAMax(newInstance);
+		double aMax = calculateAMax(newInstance);
 
 		// making sure that we get to an value where even all item combined, we cannot get that value
-		int[][] minCost = new int[numItem][numItem * aMax + 1];
+		double[][] minCost = new double[numItem][(int)(numItem * aMax) + 1];
 
 		for(int i = 0 ; i < minCost.length; i++)
 		{
@@ -520,15 +583,24 @@ public class Implementation {
 		}
 
 		// making sure that we get to an value where even all item combined, we cannot get that value
-		boolean[][] take = new boolean[numItem][numItem * aMax + 1];
+		boolean[][] take = new boolean[numItem][(int)(numItem * aMax) + 1];
 
 		solveMaximumKnapsack(newInstance, minCost, take, aMax, numItem, budget);
 
 		//		aMax = calculateAMax(knapsack);
-		int optimalValue = constructMaxKnapsackSolution(newInstance, minCost, take, aMax, numItem, budget, itemTaken);
-		return (int) (optimalValue * scaleFactor);
+		double optimalValue = constructMaxKnapsackSolution(newInstance, minCost, take, aMax, numItem, budget, itemTaken);
+		for(int i = 0 ; i < itemTaken.size(); i++)
+		{
+			itemTaken.get(i).setValue(itemTaken.get(i).getValue() * scaleFactor);
+		}
+		return (optimalValue * scaleFactor);
 	}
 
+	/**
+	 * Method to get the value of item with the maximum value in a knapsack instance
+	 * @param knapsack
+	 * @return
+	 */
 	private static int calculateAMax(Knapsack knapsack)
 	{
 		int aMax = 0;
@@ -539,41 +611,66 @@ public class Implementation {
 		return aMax;
 	}
 
+	/**
+	 * The method that bridges the gap between decision problem and optimazation problem for Knapsack. This is 
+	 * specifically written for the process of reduction experiment
+	 * If the result from the Knapsack algorithms is larger or equal to the target in the decision version,
+	 * then we have can return true
+	 * Also, due to the way that subsetsum reduction to knapsack (in order to work with higher number of clauses in 
+	 * 3SAT), we check specifically for two consecutive item in knapsack (which represents v and v') and see
+	 * whether they both are in the results. If they are, we cannot have the results due to the fact that 
+	 * we would be taking both true and false for a literal in 3SAT.
+	 * @param knapsack
+	 * @param algorithm
+	 * @return
+	 */
 	private static boolean decide01Knapsack(Knapsack knapsack, int algorithm)
 	{
 		ArrayList<Item> itemTaken = new ArrayList<Item>();
-		
+
+		// copy the item into a new list to keep since some algorithms changes the order of 
+		// item in the knapsack
+		ArrayList<Item> knapsackItemList = new ArrayList<>();
+		for(int i = 0 ; i < knapsack.getItemList().size(); i++)
+		{
+			knapsackItemList.add(knapsack.getItemList().get(i));
+		}
+
 		double returnedFromMaxProblem = -1;
 		if(algorithm == 1) returnedFromMaxProblem = dynamicProgrammingKnapsack(knapsack, itemTaken);
-		if(algorithm == 2) returnedFromMaxProblem = dynamicProgrammingKnapsackMinCost(knapsack, itemTaken);
-		if(algorithm == 3) returnedFromMaxProblem = greedyKnapsack(knapsack, itemTaken);
-		if(algorithm == 4) returnedFromMaxProblem = knapsackApproxScheme(knapsack, 2, itemTaken);
+		else if(algorithm == 2) returnedFromMaxProblem = dynamicProgrammingKnapsackMinCost(knapsack, itemTaken);
+		else if(algorithm == 3) returnedFromMaxProblem = greedyKnapsack(knapsack, itemTaken);
+		else if(algorithm == 4) returnedFromMaxProblem = knapsackApproxScheme(knapsack, 2, itemTaken);
+		else throw new IllegalStateException("The algorithm doesn't exist. Only have 1 - 4."); // could have use enum for this
 
+		Collections.sort(itemTaken, new Implementation(). new ItemComparatorCost());
+		System.out.println(itemTaken);
+
+		// does this hit the target?
 		boolean getTarget = false;
 		if(returnedFromMaxProblem >= (int) knapsack.getTarget()) getTarget = true;
-		
-		boolean includedEverything = false;
-		int literalCount = 0;
+
+		// does this include both v and v' for each literal?
+		boolean doubleCount = false;
 		for(int i = 0; i < knapsack.getItemList().size(); i += 2)
 		{
-			Item v = knapsack.getItem(i); // v
-			Item vPrime = knapsack.getItem(i+1); // v'
-			
-			boolean included = false;
-			if(knapsack.getItemList().contains(v))
+			Item v = knapsackItemList.get(i); // v
+			Item vPrime = knapsackItemList.get(i+1); // v'
+
+			if(itemTaken.contains(v) && itemTaken.contains(vPrime)) // contains is implements through equals() in Item class
 			{
-				included = true;
+				System.out.println(v);
+				System.out.println(vPrime);
+				doubleCount = true;
 			}
-			else if(knapsack.getItemList().contains(vPrime))
-			{
-				included = true;
-			}
-			if(included) literalCount++;
 		}
-		System.out.println(literalCount);
-		if(literalCount == knapsack.getItemList().size() / 2) includedEverything = true;
 		
-		return (getTarget && includedEverything);
+		System.out.println(returnedFromMaxProblem);
+		System.out.println(knapsack.getItemList().size());
+
+		System.out.println("Get Target: " + getTarget);
+		System.out.println("Double Count: " + doubleCount);
+		return (getTarget && !doubleCount);
 	}
 
 	/**
@@ -589,7 +686,7 @@ public class Implementation {
 	}
 
 	/**
-	 * Comparator to sort items based on cost
+	 * Comparator to sort items based on cost descendingly
 	 * @author AnhVuNguyen
 	 *
 	 */
@@ -605,12 +702,12 @@ public class Implementation {
 		// NEED THIS TO GENERATE LOG AS RAW DATA
 		Logger LOGGER = Logger.getLogger(Implementation.class);
 
-		// set mode that I'm in
-		boolean testKnapsackValidity = false;
-		boolean testing3SAT = true;
-		boolean testingKnapsack = false;
-		boolean runningSimulation = false;
-		boolean vuMachine = false;
+		// set mode
+		boolean testKnapsackValidity = false; // testing knapsack algorithms with some test case
+		boolean testing3SAT = true; // performing experiment on 3SAT
+		boolean testingKnapsack = false; // performing experiment on Knapsack 
+		boolean runningSimulation = true; // enable python scripts to automaticaly parse log file
+		boolean vuMachine = true; // if it's Vu's machine, it'll launch RSturio to do the analysis
 
 		/*
 		 * Testing whether Knapsack is returning what I'm expecting using three different test cases
@@ -692,28 +789,64 @@ public class Implementation {
 
 		if(testing3SAT)
 		{
-			//for(int i = 0 ; i < 100; i++)
-			//{
-			ClauseCollection ThreeSAT = InstanceGenerator.get3SAT();
-			System.out.println(ThreeSAT);
-			System.out.println();
-			System.out.println(reduce3SATTo1In3SAT(ThreeSAT));
-			System.out.println();
-			System.out.println(reduce1In3SATToSubsetSum(reduce3SATTo1In3SAT(ThreeSAT))); // TODO: too big, tweaking with clauses size right now
-			SubsetSum ss = reduce1In3SATToSubsetSum(reduce3SATTo1In3SAT(ThreeSAT));
-			Knapsack ks = reduceSubsetSumToKnapsack(ss);
-			System.out.println();
-			System.out.println(ks);
-			System.out.println();
-			System.out.println("DP1: " + dynamicProgrammingKnapsack(ks));
-			System.out.println("DP1 Decide: " + decide01Knapsack(ks, 1));
-			System.out.println("DP2: " + dynamicProgrammingKnapsackMinCost(ks));
-			System.out.println("DP2 Decide: " + decide01Knapsack(ks, 2));
-			System.out.println("Greedy: " + greedyKnapsack(ks));
-			System.out.println("Greedy Decide: " + decide01Knapsack(ks, 3));
-			System.out.println("FPTAS: " + knapsackApproxScheme(ks, 2));
-			System.out.println("FPTAS Decide: " + decide01Knapsack(ks, 4));
-			//}
+			for(int i = 0 ; i < 200; i++)
+			{
+				LOGGER.info("Count: " + i);
+				ClauseCollection ThreeSAT = InstanceGenerator.get3SAT();
+				//System.out.println(ThreeSAT);
+				//LOGGER.info(ThreeSAT);
+				//System.out.println();
+				//System.out.println(reduce3SATTo1In3SAT(ThreeSAT));
+				//System.out.println();
+				//System.out.println(reduce1In3SATToSubsetSum(reduce3SATTo1In3SAT(ThreeSAT))); // TODO: too big, tweaking with clauses size right now
+				SubsetSum ss = reduce1In3SATToSubsetSum(reduce3SATTo1In3SAT(ThreeSAT));
+				Knapsack ks = reduceSubsetSumToKnapsack(ss);
+				Knapsack ks1 = reduceSubsetSumToKnapsack(ss);
+				Knapsack ks2 = reduceSubsetSumToKnapsack(ss);
+				Knapsack ks3 = reduceSubsetSumToKnapsack(ss);
+				///System.out.println();
+				//System.out.println(ks);
+				//System.out.println();
+				//System.out.println("DP1: " + dynamicProgrammingKnapsack(ks));
+				long start = System.nanoTime();
+				boolean solveOne = decide01Knapsack(ks, 1);
+				long end = System.nanoTime();
+				LOGGER.info("1: " + (end - start)/1000000.0 + " ms");
+				//			System.out.println("DP1 Decide: " + solveOne);
+				//			System.out.println();
+				//LOGGER.info("DP1 Decide: " + solveOne);
+				//System.out.println("DP2: " + dynamicProgrammingKnapsackMinCost(ks));
+				start = System.nanoTime();
+				boolean solveTwo = decide01Knapsack(ks1, 2);
+				end = System.nanoTime();
+				LOGGER.info("2: " + (end - start)/1000000.0 + " ms");
+				//			System.out.println("DP2 Decide: " + solveTwo);
+				//			System.out.println();
+				//LOGGER.info("DP2 Decide: " + solveTwo);
+				//System.out.println("Greedy: " + greedyKnapsack(ks));
+				start = System.nanoTime();
+				boolean solveThree = decide01Knapsack(ks2, 3);
+				end = System.nanoTime();
+				LOGGER.info("3: " + (end - start)/1000000.0 + " ms");
+				//			System.out.println("Greedy Decide: " + solveThree);
+				//			System.out.println();
+				//LOGGER.info("Greedy Decide: " + solveThree);
+				//System.out.println("FPTAS: " + knapsackApproxScheme(ks, 2));
+				start = System.nanoTime();
+				boolean solveFour = decide01Knapsack(ks3, 4);
+				end = System.nanoTime();
+				LOGGER.info("4: " + (end - start)/1000000.0 + " ms");
+				//			System.out.println("FPTAS Decide: " + solveFour);
+				//			System.out.println();
+				//LOGGER.info("FPTAS Decide: " + solveFour);
+
+				if(!solveOne && !solveTwo && !solveThree && !solveFour)
+				{
+					System.err.println("FAIL FOR: \n" + ThreeSAT);
+					//LOGGER.info("FAIL FOR: \n" + ThreeSAT);
+					// break;
+				}
+			}
 		}
 
 		if(testingKnapsack)
@@ -726,7 +859,7 @@ public class Implementation {
 				//LOGGER.info(knapsack);
 				try{
 					long startTime = System.nanoTime();
-					int res = dynamicProgrammingKnapsack(knapsack);
+					double res = dynamicProgrammingKnapsack(knapsack);
 					//				System.out.println("O(nW): \t\t\t\t\t" + res);
 					LOGGER.info("O(nW): " + res);
 
@@ -746,7 +879,7 @@ public class Implementation {
 
 				try{
 					long startTime = System.nanoTime();
-					int res = dynamicProgrammingKnapsackMinCost(knapsack);
+					double res = dynamicProgrammingKnapsackMinCost(knapsack);
 					//				System.out.println("O(n^2 * v(aMax)): \t\t\t" + res);
 					LOGGER.info("O(n^2 * v(aMax)): " + res);
 
@@ -766,7 +899,7 @@ public class Implementation {
 
 				try{
 					long startTime = System.nanoTime();
-					int res = greedyKnapsack(knapsack);
+					double res = greedyKnapsack(knapsack);
 					//				System.out.println("Greedy: \t\t\t\t" + res);
 					LOGGER.info("Greedy: " + res);
 					long endTime = System.nanoTime();
@@ -790,7 +923,7 @@ public class Implementation {
 					double scaleFactor = ep * ( aMax / itemNo);
 
 					long startTime = System.nanoTime();
-					int res = knapsackApproxScheme(knapsack, scaleFactor);
+					double res = knapsackApproxScheme(knapsack, scaleFactor);
 					//				System.out.println("FPTAS: \t\t\t\t" + res);
 					LOGGER.info("FPTAS: " + res);
 					long endTime = System.nanoTime();

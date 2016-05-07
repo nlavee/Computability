@@ -10,6 +10,8 @@ removeMS <- function(x)
   return(x)
 }
 
+#### KNAPSACK EXPERIMENTS ####
+
 KnapsackRes <- na.omit(res)
 KnapsackRes$DP1.Running.Time <- as.numeric(removeMS(KnapsackRes$DP1.Running.Time))
 KnapsackRes$DP2.Running.Time <- as.numeric(removeMS(KnapsackRes$DP2.Running.Time))
@@ -19,7 +21,7 @@ KnapsackRes$FPTAS.Running.Time <- as.numeric(removeMS(KnapsackRes$FPTAS.Running.
 summary(KnapsackRes)
 
 ## Save this dataframe for report
-save(KnapsackRes, file="KnapsackRes.RData")
+save(KnapsackRes, file="/Users/AnhVuNguyen/Documents/workspace/ComputabilityComplexityAndHeuristics/data/KnapsackRes.RData")
 
 ## Statistical Summary
 stat.desc(KnapsackRes$DP1.Running.Time, basic = F)
@@ -79,3 +81,21 @@ ggplot() +
   geom_point(data = valuesFPTAS, aes(count, FPTAS.Value, shape = "FPTAS", colour = "FPTAS")) + 
   geom_smooth(data = valuesFPTAS, aes(count, FPTAS.Value, colour = "FPTAS"))
 
+#### 3SAT EXPERIMENTS ####
+
+ReductionRes <- na.omit(reduction_res)
+ReductionRes$DP1.Running.Time <- as.numeric(removeMS(ReductionRes$DP1.Running.Time))
+ReductionRes$DP2.Running.Time <- as.numeric(removeMS(ReductionRes$DP2.Running.Time))
+ReductionRes$Greedy.Running.Time <- as.numeric(removeMS(ReductionRes$Greedy.Running.Time))
+ReductionRes$FPTAS.Running.Time <- as.numeric(removeMS(ReductionRes$FPTAS.Running.Time))
+
+summary(ReductionRes)
+
+## Save this dataframe for report
+save(ReductionRes, file="/Users/AnhVuNguyen/Documents/workspace/ComputabilityComplexityAndHeuristics/data/ReductionRes.RData")
+
+## Statistical Summary
+stat.desc(ReductionRes$DP1.Running.Time, basic = F)
+stat.desc(ReductionRes$DP2.Running.Time, basic = F)
+stat.desc(ReductionRes$Greedy.Running.Time, basic = F)
+stat.desc(ReductionRes$FPTAS.Running.Time, basic = F)
