@@ -9,6 +9,7 @@ output: pdf_document
 library(ggplot2); library(stringr); library(gridExtra); library(pastecs)
 load(file="KnapsackRes.RData")
 ```
+
 # Introduction #  
 
 Throughout the semester, we have gone through different reductions and different way to solve Knapsack problem in reasonable time. This experiments aim to display the differences quantitatively in terms of algorithms' result as well as running time.  

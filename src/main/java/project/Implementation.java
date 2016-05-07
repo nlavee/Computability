@@ -118,47 +118,53 @@ public class Implementation {
 			for(int a = 0 ; a < v.length; a ++)
 			{
 				int ele = v[a];
-				if(a == v.length / 10)
-				{
-					st.append(".");
-				}
+//				if(a == v.length / 10)
+//				{
+////					System.out.println("Decimal at : " + a);
+//					st.append(".");
+//				}
 				st.append(ele);
 			}
 			//			st.append(".0");
 			//for(int ele : v) st.append(ele);
-			Double vInt = Double.parseDouble(st.toString());
+			Double vDouble = Double.parseDouble(st.toString());
 
 			st = new StringBuilder();
 			for(int a = 0 ; a < vPrime.length; a ++)
 			{
 				int ele = vPrime[a];
-				if(a == vPrime.length / 10)
-				{
-					st.append(".");
-				}
+//				if(a == vPrime.length / 10)
+//				{
+////					System.out.println("Decimal at : " + a);
+//					st.append(".");
+//				}
 				st.append(ele);
 			}
 			//			st.append(".0");
-			Double vPrimeInt = Double.parseDouble(st.toString());
+			Double vPrimeDouble = Double.parseDouble(st.toString());
 
-			subsetSumItems.add(vInt);
-			subsetSumItems.add(vPrimeInt);
+			subsetSumItems.add(vDouble);
+			subsetSumItems.add(vPrimeDouble);
+
+			//			System.out.println("v length: " +v.length);
+			//			System.out.println("v' length: " + vPrime.length);
 		}
 		System.out.println(subsetSumItems);
 
 		StringBuilder st = new StringBuilder();
 		for(int i = 0 ; i < nPlusM; i++) 
 		{
-			if(i == nPlusM / 10)
-			{
-				st.append(".");
-			}
+//			if(i == nPlusM / 10)
+//			{
+////				System.out.println("Decimal at : " + i);
+//				st.append(".");
+//			}
 			st.append("1");
 
 		}
 		//		st.append(".0");
 		Double T = Double.parseDouble(st.toString());
-
+		//		System.out.println("nPlusM: " + nPlusM);
 		//System.out.println(T);
 		return new SubsetSum(subsetSumItems, T);
 	}
@@ -174,8 +180,6 @@ public class Implementation {
 
 		knapsack.setBudget(ss.getTarget());
 		knapsack.setTarget(ss.getTarget());
-
-		ArrayList<Item> itemListKS = new ArrayList<Item>();
 
 		ArrayList<Double> itemSet = ss.getSet();
 		for(Double l : itemSet)
@@ -522,14 +526,13 @@ public class Implementation {
 	{
 		// NEED THIS TO GENERATE LOG AS RAW DATA
 		Logger LOGGER = Logger.getLogger(Implementation.class);
-
 		// set mode that I'm in
 		boolean testKnapsackValidity = false;
-		boolean testing3SAT = false;
-		boolean testingKnapsack = true;
-		boolean runningSimulation = true;
-		boolean vuMachine = true;
-		
+		boolean testing3SAT = true;
+		boolean testingKnapsack = false;
+		boolean runningSimulation = false;
+		boolean vuMachine = false;
+
 		/*
 		 * Testing whether Knapsack is returning what I'm expecting using three different test cases
 		 */
@@ -607,6 +610,7 @@ public class Implementation {
 			System.out.println();
 		}
 
+
 		if(testing3SAT)
 		{
 			//for(int i = 0 ; i < 100; i++)
@@ -622,14 +626,14 @@ public class Implementation {
 			System.out.println();
 			System.out.println(ks);
 			System.out.println();
-			//			System.out.println("DP1: " + dynamicProgrammingKnapsack(ks));
-			//			System.out.println("DP1 Decide: " + decide01Knapsack(ks, 1));
-			//			System.out.println("DP2: " + dynamicProgrammingKnapsackMinCost(ks));
-			//			System.out.println("DP2 Decide: " + decide01Knapsack(ks, 2));
-			//			System.out.println("Greedy: " + greedyKnapsack(ks));
-			//			System.out.println("Greedy Decide: " + decide01Knapsack(ks, 3));
-			//			System.out.println("FPTAS: " + knapsackApproxScheme(ks, 2));
-			//			System.out.println("FPTAS Decide: " + decide01Knapsack(ks, 4));
+			System.out.println("DP1: " + dynamicProgrammingKnapsack(ks));
+			System.out.println("DP1 Decide: " + decide01Knapsack(ks, 1));
+			System.out.println("DP2: " + dynamicProgrammingKnapsackMinCost(ks));
+			System.out.println("DP2 Decide: " + decide01Knapsack(ks, 2));
+			System.out.println("Greedy: " + greedyKnapsack(ks));
+			System.out.println("Greedy Decide: " + decide01Knapsack(ks, 3));
+			System.out.println("FPTAS: " + knapsackApproxScheme(ks, 2));
+			System.out.println("FPTAS Decide: " + decide01Knapsack(ks, 4));
 			//}
 		}
 

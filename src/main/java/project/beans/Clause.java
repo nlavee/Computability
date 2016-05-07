@@ -39,7 +39,7 @@ public class Clause {
 	{
 		for(Literal lit : construct)
 		{
-			if(l.getId() == lit.getId() && (l.isNegate() && lit.isNegate()))
+			if(l.getId() == lit.getId() && (l.isNegate() == lit.isNegate()))
 			{
 				return true;
 			}
