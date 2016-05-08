@@ -1,6 +1,6 @@
 ---
-title: "Final Report"
-author: "Anh Vu Nguyen"
+title: "CS306 Experiment Report"
+author: "Anh Vu L Nguyen"
 date: "April 26, 2016"
 output: pdf_document
 ---
@@ -12,50 +12,50 @@ load(file= paste( path, "/KnapsackRes.RData", sep = ""))
 load(file= paste( path, "/ReductionRes.RData", sep = ""))
 ```
 
-# Introduction #  
+# I. Introduction #  
 
-Throughout the semester, we have gone through different reductions and different way to solve Knapsack problem in reasonable time. This experiments aim to display the differences quantitatively in terms of algorithms' result as well as running time.  
+Throughout the semester, we have explored different ways to solve Maximum Knapsack, an NP-Hard problem, in reasonable time. This experiments aim to display the differences quantitatively in terms of algorithms' result as well as running time. Additionally, Maximum Knapsack is versatile in its use to solve other problems, as it can be used to solve the decision vertion of the problem. The decision version of this problem is NP-Complete and therefore can be used to solve other NP-Complete problems, given the correct reductions. Therefore, this paper also aim to show the differences in time needed to solve a Maximum Knapsack instance that is reduced from 3SAT.   
 
 There are three parts to this experiment:
 
-1. **A general assessment of the value returned from the four algorithms implemented to solve Maximum Knapsack problem using 100 large random instances.**  
+1. **A general assessment of the value returned from the four algorithms implemented to solve Maximum Knapsack problem, which are discussed below, using 100 large random instances.**  
 2. **Assessment on running time using large random instances of Maximum Knapsack.**  
 3. **Assessment on running time involving large random instances of 3SAT, which are reduced into Subset Sum, and solved using alogirthms for Maximum Knapsack problem.**  
 
 ## Notation ##
-This report will use abbreviations to make it easier to know what algorithm that is being discussed:  
+This report will use abbreviations to make it easier to know what algorithm that is being discussed for solving Maximum Knapsack instances. Below are the abbreviations:    
 
 * DP1 -- This refers to the *$O(nW)$* dynamic programming algorithm that we discussed in CS305.
 * DP2 -- This refers to the *$O(n^2 \cdot v(a_{max})$* dynamic programming algorithm from the textbook based on the MinCost version of the problem.
 * Greedy -- This refers to the greedy 2-approximation from the textbook.
 * FPTAS -- This refers to the FPTAS based on scaling with the optimal dynamic programming algorithm from DP2.  
 
-# Experiment Setup #
-The algorithms to generate running time are taken from pseudocode provided in CS305 as well as from "What is a Computer and What Can It Do?" (O'Connell). In total, I implemented four algorithms for solving Maximum Knapsack problem and also two reductions for decision problem (3SAT, 1in3SAT, and SubsetSum).  
+# II. Experiment Setup #
+The algorithms used in this experiment are taken from pseudocode provided in CS305 as well as from "What is a Computer and What Can It Do?" (O'Connell). In total, I implemented four algorithms for solving Maximum Knapsack problem and also three reductions for decision problem (3SAT, 1in3SAT, and SubsetSum).  
 
-Since the reports focus on two different experiments, I set up two different workflows to accomodate this. 
+Since the reports focus on essentially two different experiments, I set up two different workflows to accomodate this. 
 
-## Maxmim Knapsack experiment ##
-For this experiment, I set up 100 random instances of Maximum Knapsacks. There was a need to arbitrarily curb the maximum values for number of item, as well as each item's value and cost in order to make sure that each instances runs in reasonable amount of time (below 5 seconds for each algorithm). Each knapsack problem is constrained to the following attribute:  
+## Maxmim Knapsack Experiments ##
+For this experiment, I generated 100 random instances of Maximum Knapsacks. There was a need to arbitrarily curb the maximum values for number of items, as well as each item's value and cost in order to make sure that each instances runs in reasonable amount of time (which I arbitrarily established to be below 1 minutes for each algorithm). Each knapsack problem is constrained to the following attributes:  
 
-* At most 200 items
-* Each item's value cannot exceeds 1000 and is an integer
-* Each item's cost cannot exceeds 1000 and is an integer  
+* Each instance contains at most 200 items.
+* Each item's value cannot exceeds 1000 and is an integer.
+* Each item's cost cannot exceeds 1000 and is an integer.  
 
-Using this constraints, I also limit the range of Maximum Knapsack problem presented so that we have a sample with specified attributes. This limits the problem we would face when we have to group instances with 50 items and 5000 items should we not enforce the constraint. The calculation of density of instances then would not be as reflective of the actual algorithms due to skewness introduced by instances with a very large number of items.
+Using these constraints, I limited the range of Maximum Knapsack problem presented so that we have a sample with specified attributes. This helped us to avoid the problem we would face when we have to group instances with 50 items and 5000 items should we not enforce the constraint. The calculation of density of instances then would not be as reflective of the actual algorithms due to skewness introduced by instances with a very large number of items.
 
-Each instances solved using the four algorithms for solving Maximum Knapsack. The results (maximum value returned) as well as running time from each algorithm is logged into a text file (can be found in log folder of this project). I also wrote a simple Python script (can be found in scripts folder of this project) to parse this log file into a csv file for statistical analysis with R. This report as well as all the graphs are generated using R.
+Each instance was solved using all four algorithms for solving Maximum Knapsack. The results (maximum value returned) as well as the running time in miliseconds (ms) from each algorithm was logged in a text file (can be found in log folder of this project). I also wrote a simple Python script (can be found in scripts folder of this project) to parse this log file into a csv file for statistical analysis with R. This report as well as all the graphs are generated using R.
 
 ## Reductions For 3SAT ##  
-For this experiment, I set up 100 instances of 3SAT. Each instance is then reduced to 1in3SAT, which is then subsequently reduced into Subset Sum and Knapsack respectively. The running time needed to solve the Knapsack instances and returns an answer for the decision version of the problem is recorded (the time for the reduction is not taken into account as this would take same amount of time for all algorithms). All timing is still recorded in ms in order to maintain consistency.   
+For this experiment, I established 200 instances of 3SAT. Each instance was then reduced to 1in3SAT, which was then subsequently reduced into Subset Sum and Knapsack respectively. The running time needed to solve the Knapsack instances and returns an answer for the decision version of the problem is recorded (the time for the reduction is not assessed as this would take same amount of time for all algorithms). All timings were still recorded in ms in order to maintain consistency.   
 
-Since the program is written in Java, where number is constrained to 64-bits, there is a limit to how many clauses and variables I can have in 3SAT instances. This is due to the way we performed our reduction. When reduced from 3SAT to 1in3SAT, we know that the number of clauses will triple, and for each clause will introduce four new literals as well. When we reduce 1in3SAT, the total number of literals and clauses makes up the target for Subset Sum. Therefore, I have instances where we either exceed Java Heap Space while doing the reduction, or we ran out of number (and loop back to negative number, which breaks the algorithm). Therefore, there's first a need to perform a check on the maximum number of clauses 3SAT instances can have. Since the assignment of literals in clauses is randomized in my algorithms, I do not have control on this for now. After testing with several instances, I decide to limit the number of clauses to 2 clauses.  
+Since the program is written in Java, where numbers are constrained to 64-bits, there is a limit to how many clauses and variables I could have in 3SAT instances. This is due to the way we performed our reduction. When reduced from 3SAT to 1in3SAT, we know that the number of clauses will triple, and for each clause will introduce four new literals as well. When we reduce 1in3SAT, the total number of literals and clauses makes up the target for Subset Sum. Therefore, I have instances where we either exceed Java Heap Space while solving Maximum Knasack, or we ran out of number (and loop back to negative number, which breaks the algorithms). More prominently, Java could not parse the array of digit into an int or double. Therefore, there was a need to perform a check on the maximum number of clauses 3SAT instances can have. Since the assignment of literals in clauses is randomized in my algorithms, I do not have control on this for now. After testing with several instances, I found that the limit for 3SAT clause was 1 clause. However, I managed to come up with a tweak for our reduction that allow me to expand 3SAT clause to have 2 clauses.s  
 
-I have also tried to come up with way to reduce the size of number that are passed in for Subset Sum instances. In the original reduction, we use the number of literal for v and v' in the digit that matches the literal number (e.g. literal #4 will have 1 in the 4th digit of the variable v and v' generated from this literal). The reason for this is to make sure that we do not use the same item more than once, which would mean that we chose true and false for the same literal. In order to reduce the size, I took out all the column representing the literal number. Instead, since we are adding v and v' into our list respectively, we use index in the array to check for potentially taking two items that we cannot take. After using Knapsack to solve for this problem, we would go through the set and check to see whether there're any two consecutive items both present in the list of item taken. If there's, we reject the results from Knapsack. This way, we would only have to deal with the number of clauses as values for v and v'. However, this only helps us to get to 2 clauses in the orignal 3SAT instances. 
+The tweak that I came up with is aimed to reduce the size of number that are passed in for Subset Sum instances as items' cost or values, and budget. In the original reduction, we use the number of literal (n) for v and v' in the digit that matches the literal number (e.g. literal #4 will have 1 in the 4th digit of the variable v and v' generated from this literal). The reason for this is to make sure that we do not use the same item more than once, which would mean that we chose true and false for the same literal. However, since we are adding v and v' into our list respectively always, we can use index in the arraylist to check for potentially taking two items that we cannot take. After using Knapsack to solve for this problem, we would go through the set and check to see whether there are any two consecutive items, that we know represent v and v', both present in the list of item taken. If there is, we reject the results from Knapsack. Therefore, I took out all the columns representing the literal number. This way, we would effectively  only have to deal with the number of clauses as values for v and v'. However, this only helps us to get to 2 clauses in the orignal 3SAT instances. 
 
 At the same time, in order to compensate for the small number of clauses in 3SAT, I generated 200 random instances instead of 100 like the Knapsack experiments. The larger sample size hopefully can give us a better understanding into the running time for this experiment.
 
-# The Four Algorithms for Maximum Knapsack #
+# III. The Four Algorithms for Maximum Knapsack #
 The expectation for the four algorithsm being implemented to solve Maximum Knapsack problem are summarized as follow: 
 
 1. DP1 is expected to run slowly compared to the other algorithms.
@@ -66,6 +66,8 @@ The expectation for the four algorithsm being implemented to solve Maximum Knaps
 
 ## Assessment of Maximum Knapsack Algorithms ##  
 ### Maximum Knapsack Returned Values ###
+
+Below are the statistical summary for values returned from Knapsack experiments.  
 
 **Values Returned from DP1**
 ```{r, echo=FALSE, message=FALSE}
@@ -87,6 +89,8 @@ summary(KnapsackRes$Greedy.Value)
 summary(KnapsackRes$FPTAS.Value)
 ```
   
+From the statistical summary, we see that Greedy has the highest mean while FPTAS has the lowest mean. However, the differences are small with the scale of the number that we see.  
+
 Below is the graph plotting the returned values for each instances. The color indicates which algorithms is being used. At the same time, there's a trend line indicating the trend of values for each algorithm. 
 
 ```{r, echo=FALSE, message=FALSE}
@@ -130,7 +134,9 @@ summary(KnapsackRes$Greedy.Running.Time)
 summary(KnapsackRes$FPTAS.Running.Time)
 ```
 
-Below is the graphs of running time for different instances. There is a smooth line to indicate the general trend of all the instances. Noticing the difference on the y-axis, which indicates the running time in millisecond (ms), we can see that Greedy runs in the range below 3ms while DP2 runs in the range 2000ms, or 2 seconds. FPTAS seems to have a higher upper bound for running time compared to DP1. FPTAS and DP2 graphs are very similar, despite the differences in scale on the y-axis. This is somewhat expected as FPTAS implements DP2 as part of its algorithm. From this graph alone, we would expect that Greedy would have the best running time.   
+As expected, Greedy has the lowest mean of running time, indicating that it runs the fatest out of all other algorithm. However, DP1 is not the slowest algorithm. Instead, the slowest was DP2. The mean of running time for FPTAS is roughly half of that of DP2.  
+
+Below is the graphs of running time for different instances. There is again a smooth line to indicate the general trend of all the instances. Noticing the difference on the y-axis, which indicates the running time in ms, we can see that Greedy runs in the range below 3ms, while DP2 runs in the range 2000, or 2 seconds. FPTAS has a higher upper bound for running time compared to DP1. FPTAS and DP2 graphs are very similar in terms of trend line shape, despite the differences in scale on the y-axis. This is somewhat expected as FPTAS implements DP2 as part of its algorithm. From this graph alone, we know that Greedy would have the best running time. It is, however, interesting to see that for the early instances, the running time of Greedy spike a lot compared to the rest of the instances while we hardly notice a difference in the graphs for DP1, DP2, and FPTAS. The lack of differences might be attributes to the scale on the y-axis, where a slight change in running time will stand out more in Greedy graphs compared to others.   
 
 ```{r, echo=FALSE, message=FALSE}
 dp1_rt <- ggplot(KnapsackRes, aes(count, DP1.Running.Time)) + geom_point() + geom_smooth() + 
@@ -144,7 +150,7 @@ fptas_rt <- ggplot(KnapsackRes, aes(count, FPTAS.Running.Time)) + geom_point() +
 grid.arrange(dp1_rt, dp2_rt, greedy_rt, fptas_rt)
 ```
 
-Below is the density graphs for the running time of the four algorithms with our 100 instances. This graphs gives us information on how the running time is distributed among the testing instances. 
+Additionally, I also created a density graphs for the running time of the four algorithms with our 100 instances, which is shown below.
 
 ```{r echo=FALSE, message=FALSE, warning=FALSE}
 ## Density of running time
@@ -158,11 +164,11 @@ ggplot(KnapsackRes) +
   labs(title ="Running time for different algorithms", colour = "Algorithms")
 ```
 
-From the graph, we can see clearly that Greedy stands out as having the most of it running time in the lower spectrum of the graphs. This aligns with our expectation that this would have the best running time. DP1 running time at the same time does not span as much as the DP2 and FPTAS. 
+From the graph, we can see clearly that Greedy stands out as having the most of it running time in the lower spectrum of the graphs. This aligns with our expectation that this would have the best running time. DP1 running time at the same time does not span as much as the DP2 and FPTAS. DP1 also show a higher concentration of running time in the lower spectrum of the graphs while DP2 and FPTAS seems to have somewhat a straight line going through the spectrum.  
 
-# Reduction For 3SAT #
+# IV. Reduction For 3SAT #
 
-This analysis is focused on running time for the following sequence of actions: 
+This analysis is focused on running time in the experiments involved the following sequence of actions: 
 
 1. Reduce 3SAT into 1in3SAT.
 2. Reduce 1in3SAT into Subset Sum.
@@ -192,6 +198,8 @@ summary(ReductionRes$Greedy.Running.Time)
 ```{r, echo=FALSE, message=FALSE}
 summary(ReductionRes$FPTAS.Running.Time)
 ```
+ 
+Again, we see that Greed has the lowest mean of running time at 1.63 ms. DP2 and FPTAS still have the two highest running time as with the previous experiments.    
 
 Below are graphs of the running time of the instances with the trend lines in each graph.  
 
@@ -207,6 +215,8 @@ fptas_rt <- ggplot(ReductionRes, aes(count, FPTAS.Running.Time)) + geom_point() 
 grid.arrange(dp1_rt, dp2_rt, greedy_rt, fptas_rt)
 ```
 
+Again, we see that the range of running time for Greedy is much slower than the rest of the algorithms with all instances running below 300ms. DP1 has the range of below 400 ms.  
+
 Below is the density graphs for the running time of the four algorithms with our 200 instances. This graphs gives us information on how the running time is distributed among the testing instances. Since there is such a disparity between the distribution of running time between Greedy and DP2 and FPTAS, I decided to take the log scale of the running time of each instances.  
 
 ```{r echo=FALSE, message=FALSE, warning=FALSE}
@@ -220,16 +230,18 @@ ggplot(ReductionRes) +
   labs(title ="Running time for different algorithms for 3SAT experiment", colour = "Algorithms")
 ```
 
-# Improvements For Experiments #
+Again, Greedy stays at the lowest left spectrum of the graph, followed by DP1, FPTAS and then DP2 respectively. This aligns with what we have discussed so far.  
+
+# V. Improvements For Experiments #
 There are definitely rooms for improvements with this experiments that I could have done in order to yield better comparison. 
 
 Firstly, I could have increased the sample size from 100 to 1000, which should give us a better understanding regarding the values and running time. However, due to the circumstances of limited time frame to conduct this experiment, the limit of 100 instances in each experiment should be sufficient to give us a survey into our investigations.  
 
-Secondly, we could have implemented the same algorithms in different languages such as Python and C. By taking the average of the same algorithm in three different languages, it would help us get a running time that is pseudo language-agnostic. The average for this number can be compared in the same manner in order to get the differences between different algorithms.
+Secondly, we could have implemented the same algorithms in different languages such as Python and C. By taking the average of the same algorithm in three different languages, it would help us get a running time that is pseudo language-agnostic. The average for this number can be compared in the same manner in order to get the differences between different algorithms. Also, some languages might not restrict the number size the same way as Java. Apparently, implementing the reduction from 1in3SAT to Subset Sum would not face the same problem in Python due to the value of an integer is not restricted by the number of bits and can expand to the limit of the available memory (Rathi).  
 
+# VI. Conclusion #
+The two experiments have shown us the potential differences in running time for different algorithms given the same problems. It is very interesting to see the numbers being quantified as shown in graphs and charts. It was also very interesting to see theoretical problems translated to actual code and faces the limitations from the specific coding language. The fact that I have to think of way to go around the problem definitely taught me a lot.  
 
-# Conclusion #
-
-
-# References #  
-1. O'Connell, Thomas C. "What Is a Computer and What Can It Do?" Place of Publication London: College Publications, 2013. N. pag. Print.
+# VII. References #  
+1. O'Connell, Thomas C. "What Is a Computer and What Can It Do?" Place of Publication London: College Publications, 2013. N. pag. Print.  
+2. Rathi, Abhay. "What Is the Maximum Possible Value of an Integer in Python ? - GeeksforGeeks." GeeksforGeeks. 2016. Web. 08 May 2016. <http://www.geeksforgeeks.org/what-is-maximum-possible-value-of-an-integer-in-python/>.

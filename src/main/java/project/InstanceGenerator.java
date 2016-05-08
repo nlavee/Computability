@@ -73,7 +73,7 @@ public class InstanceGenerator {
 				// a (pseudo) random call to randomly decide whether we should reuse literal from before
 				boolean reuseLiteral = Math.round(rand.nextDouble()) == 1 ? true : false;
 
-				// check if we're supposed to resuse literal & whether we have any literal to reuse
+				// check if we're supposed to reuse literal & whether we have any literal to reuse
 				if(reuseLiteral && literalList.size() > 0)
 				{
 					// randomly call for an index from list of literal that we have
@@ -126,8 +126,8 @@ public class InstanceGenerator {
 	
 	public static void main(String[] args)
 	{
-//		System.out.println(get3SAT());
-		System.out.println(getKnapsack());
+		System.out.println(get3SAT());
+//		System.out.println(getKnapsack());
 	}
 
 }
