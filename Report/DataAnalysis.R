@@ -12,7 +12,7 @@ removeMS <- function(x)
 
 #### KNAPSACK EXPERIMENTS ####
 
-KnapsackRes <- na.omit(res)
+KnapsackRes <- na.omit(knapsack_res)
 KnapsackRes$DP1.Running.Time <- as.numeric(removeMS(KnapsackRes$DP1.Running.Time))
 KnapsackRes$DP2.Running.Time <- as.numeric(removeMS(KnapsackRes$DP2.Running.Time))
 KnapsackRes$Greedy.Running.Time <- as.numeric(removeMS(KnapsackRes$Greedy.Running.Time))

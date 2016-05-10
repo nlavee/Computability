@@ -727,8 +727,8 @@ public class Implementation {
 
 		// set mode
 		boolean testKnapsackValidity = false; // testing knapsack algorithms with some test case
-		boolean testing3SAT = true; // performing experiment on 3SAT
-		boolean testingKnapsack = false; // performing experiment on Knapsack 
+		boolean testing3SAT = false; // performing experiment on 3SAT
+		boolean testingKnapsack = true; // performing experiment on Knapsack 
 		boolean runningSimulation = true; // enable python scripts to automaticaly parse log file
 		boolean vuMachine = true; // if it's Vu's machine, it'll launch RSturio to do the analysis
 

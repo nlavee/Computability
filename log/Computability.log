@@ -1,1000 +1,900 @@
-Count: 0
-1: 227.28 ms
-2: 8069.283 ms
-3: 1.624 ms
-4: 5474.045 ms
 Count: 1
-1: 145.888 ms
-2: 6503.112 ms
-3: 1.386 ms
-4: 2807.885 ms
+O(nW): 5320.0
+Running time: 50.374 ms
+O(n^2 * v(aMax)): 5320.0
+Running time: 404.861 ms
+Greedy: 5266.0
+Running time: 8.316 ms
+FPTAS: 5079.878640776699
+Running time: 192.616 ms
 Count: 2
-1: 91.803 ms
-2: 5614.88 ms
-3: 0.953 ms
-4: 2772.0 ms
+O(nW): 21352.0
+Running time: 27.993 ms
+O(n^2 * v(aMax)): 21352.0
+Running time: 3063.353 ms
+Greedy: 21175.0
+Running time: 2.09 ms
+FPTAS: 20968.0859375
+Running time: 1069.421 ms
 Count: 3
-1: 81.798 ms
-2: 4558.847 ms
-3: 1.254 ms
-4: 2199.19 ms
+O(nW): 1934.0
+Running time: 58.165 ms
+O(n^2 * v(aMax)): 1934.0
+Running time: 39.977 ms
+Greedy: 1931.0
+Running time: 1.692 ms
+FPTAS: 1910.072463768116
+Running time: 304.141 ms
 Count: 4
-1: 79.663 ms
-2: 5494.705 ms
-3: 0.803 ms
-4: 2644.497 ms
+O(nW): 1303.0
+Running time: 13.408 ms
+O(n^2 * v(aMax)): 1303.0
+Running time: 29.176 ms
+Greedy: 1292.0
+Running time: 0.606 ms
+FPTAS: 1213.875
+Running time: 37.13 ms
 Count: 5
-1: 71.181 ms
-2: 4796.198 ms
-3: 0.601 ms
-4: 2228.977 ms
+O(nW): 29672.0
+Running time: 54.896 ms
+O(n^2 * v(aMax)): 29672.0
+Running time: 1595.743 ms
+Greedy: 29608.0
+Running time: 1.402 ms
+FPTAS: 29098.585714285713
+Running time: 747.756 ms
 Count: 6
-1: 72.27 ms
-2: 5408.369 ms
-3: 0.859 ms
-4: 2469.299 ms
+O(nW): 16527.0
+Running time: 7.449 ms
+O(n^2 * v(aMax)): 16299.0
+Running time: 84.022 ms
+Greedy: 16527.0
+Running time: 0.498 ms
+FPTAS: 16028.146551724138
+Running time: 16.731 ms
 Count: 7
-1: 80.904 ms
-2: 5306.158 ms
-3: 0.808 ms
-4: 2791.044 ms
+O(nW): 76801.0
+Running time: 220.305 ms
+O(n^2 * v(aMax)): 76468.0
+Running time: 1807.914 ms
+Greedy: 76794.0
+Running time: 1.775 ms
+FPTAS: 75884.0081521739
+Running time: 625.399 ms
 Count: 8
-1: 71.918 ms
-2: 5617.309 ms
-3: 0.582 ms
-4: 2285.103 ms
+O(nW): 4653.0
+Running time: 52.961 ms
+O(n^2 * v(aMax)): 4653.0
+Running time: 133.466 ms
+Greedy: 4646.0
+Running time: 1.57 ms
+FPTAS: 4579.166666666666
+Running time: 677.286 ms
 Count: 9
-1: 100.693 ms
-2: 4959.162 ms
-3: 0.699 ms
-4: 2704.16 ms
+O(nW): 17241.0
+Running time: 53.956 ms
+O(n^2 * v(aMax)): 17241.0
+Running time: 221.715 ms
+Greedy: 17219.0
+Running time: 0.592 ms
+FPTAS: 16910.43269230769
+Running time: 104.756 ms
 Count: 10
-1: 105.477 ms
-2: 5204.711 ms
-3: 0.57 ms
-4: 2547.399 ms
+O(nW): 8996.0
+Running time: 3.778 ms
+O(n^2 * v(aMax)): 8996.0
+Running time: 93.015 ms
+Greedy: 8996.0
+Running time: 0.202 ms
+FPTAS: 8585.0
+Running time: 9.08 ms
 Count: 11
-1: 65.02 ms
-2: 4170.681 ms
-3: 0.501 ms
-4: 2113.236 ms
+O(nW): 18478.0
+Running time: 17.002 ms
+O(n^2 * v(aMax)): 18478.0
+Running time: 387.794 ms
+Greedy: 18465.0
+Running time: 0.438 ms
+FPTAS: 17937.0
+Running time: 111.446 ms
 Count: 12
-1: 68.09 ms
-2: 3896.934 ms
-3: 0.531 ms
-4: 2090.637 ms
+O(nW): 1740.0
+Running time: 1.484 ms
+O(n^2 * v(aMax)): 1740.0
+Running time: 618.143 ms
+Greedy: 1642.0
+Running time: 0.634 ms
+FPTAS: 1427.0
+Running time: 532.399 ms
 Count: 13
-1: 72.453 ms
-2: 4875.324 ms
-3: 0.689 ms
-4: 2522.137 ms
+O(nW): 9363.0
+Running time: 6.742 ms
+O(n^2 * v(aMax)): 9363.0
+Running time: 148.326 ms
+Greedy: 9363.0
+Running time: 0.208 ms
+FPTAS: 8549.152542372882
+Running time: 17.002 ms
 Count: 14
-1: 79.053 ms
-2: 5672.403 ms
-3: 0.622 ms
-4: 2733.49 ms
+O(nW): 17845.0
+Running time: 34.363 ms
+O(n^2 * v(aMax)): 17845.0
+Running time: 160.447 ms
+Greedy: 17845.0
+Running time: 0.354 ms
+FPTAS: 17531.08860759494
+Running time: 44.296 ms
 Count: 15
-1: 76.481 ms
-2: 6030.378 ms
-3: 0.599 ms
-4: 2722.411 ms
+O(nW): 6815.0
+Running time: 0.94 ms
+O(n^2 * v(aMax)): 6815.0
+Running time: 13.41 ms
+Greedy: 6815.0
+Running time: 0.135 ms
+FPTAS: 6071.099999999999
+Running time: 0.694 ms
 Count: 16
-1: 79.75 ms
-2: 5967.464 ms
-3: 0.634 ms
-4: 2778.779 ms
+O(nW): 764.0
+Running time: 0.109 ms
+O(n^2 * v(aMax)): 491.0
+Running time: 0.416 ms
+Greedy: 764.0
+Running time: 0.085 ms
+FPTAS: 477.75
+Running time: 0.075 ms
 Count: 17
-1: 126.426 ms
-2: 4508.756 ms
-3: 0.649 ms
-4: 2026.983 ms
+O(nW): 11552.0
+Running time: 9.929 ms
+O(n^2 * v(aMax)): 11283.0
+Running time: 44.742 ms
+Greedy: 11517.0
+Running time: 0.231 ms
+FPTAS: 10851.638888888889
+Running time: 4.472 ms
 Count: 18
-1: 78.972 ms
-2: 4848.517 ms
-3: 0.66 ms
-4: 2479.741 ms
+O(nW): 45218.0
+Running time: 96.903 ms
+O(n^2 * v(aMax)): 45218.0
+Running time: 830.834 ms
+Greedy: 45187.0
+Running time: 0.608 ms
+FPTAS: 44407.322147651
+Running time: 407.724 ms
 Count: 19
-1: 71.084 ms
-2: 4870.245 ms
-3: 0.695 ms
-4: 2306.945 ms
+O(nW): 36517.0
+Running time: 64.817 ms
+O(n^2 * v(aMax)): 36517.0
+Running time: 1209.809 ms
+Greedy: 36443.0
+Running time: 0.853 ms
+FPTAS: 35843.82978723404
+Running time: 667.413 ms
 Count: 20
-1: 79.145 ms
-2: 5637.407 ms
-3: 0.65 ms
-4: 2821.055 ms
+O(nW): 15781.0
+Running time: 115.513 ms
+O(n^2 * v(aMax)): 15781.0
+Running time: 334.941 ms
+Greedy: 15776.0
+Running time: 0.723 ms
+FPTAS: 15674.3687150838
+Running time: 587.051 ms
 Count: 21
-1: 75.224 ms
-2: 4847.122 ms
-3: 0.695 ms
-4: 2443.09 ms
+O(nW): 28845.0
+Running time: 15.799 ms
+O(n^2 * v(aMax)): 28845.0
+Running time: 383.656 ms
+Greedy: 28757.0
+Running time: 0.353 ms
+FPTAS: 27968.932584269663
+Running time: 64.471 ms
 Count: 22
-1: 84.433 ms
-2: 5391.448 ms
-3: 0.748 ms
-4: 2368.964 ms
+O(nW): 319.0
+Running time: 2.989 ms
+O(n^2 * v(aMax)): 319.0
+Running time: 2.549 ms
+Greedy: 317.0
+Running time: 0.222 ms
+FPTAS: 301.7763157894737
+Running time: 5.18 ms
 Count: 23
-1: 115.093 ms
-2: 4972.852 ms
-3: 0.767 ms
-4: 2275.977 ms
+O(nW): 3934.0
+Running time: 4.459 ms
+O(n^2 * v(aMax)): 3934.0
+Running time: 15.067 ms
+Greedy: 3934.0
+Running time: 0.171 ms
+FPTAS: 3739.9999999999995
+Running time: 1.456 ms
 Count: 24
-1: 85.23 ms
-2: 4367.144 ms
-3: 0.628 ms
-4: 2096.567 ms
+O(nW): 8814.0
+Running time: 48.876 ms
+O(n^2 * v(aMax)): 8814.0
+Running time: 314.526 ms
+Greedy: 8790.0
+Running time: 0.627 ms
+FPTAS: 8671.65064102564
+Running time: 356.984 ms
 Count: 25
-1: 75.849 ms
-2: 5563.06 ms
-3: 0.59 ms
-4: 2584.747 ms
+O(nW): 2701.0
+Running time: 159.469 ms
+O(n^2 * v(aMax)): 2701.0
+Running time: 50.939 ms
+Greedy: 2701.0
+Running time: 2.577 ms
+FPTAS: 2690.4530386740335
+Running time: 556.42 ms
 Count: 26
-1: 78.576 ms
-2: 4329.84 ms
-3: 1.176 ms
-4: 2324.272 ms
+O(nW): 4038.0
+Running time: 24.774 ms
+O(n^2 * v(aMax)): 4038.0
+Running time: 118.502 ms
+Greedy: 4036.0
+Running time: 0.614 ms
+FPTAS: 3975.0
+Running time: 409.829 ms
 Count: 27
-1: 71.183 ms
-2: 4460.767 ms
-3: 0.614 ms
-4: 2284.299 ms
+O(nW): 7042.0
+Running time: 1.024 ms
+O(n^2 * v(aMax)): 7042.0
+Running time: 1915.519 ms
+Greedy: 7042.0
+Running time: 0.421 ms
+FPTAS: 6726.222222222222
+Running time: 600.898 ms
 Count: 28
-1: 71.309 ms
-2: 4472.001 ms
-3: 0.495 ms
-4: 1963.502 ms
+O(nW): 7317.0
+Running time: 44.614 ms
+O(n^2 * v(aMax)): 7240.0
+Running time: 79.287 ms
+Greedy: 7297.0
+Running time: 0.325 ms
+FPTAS: 7141.732323232323
+Running time: 88.969 ms
 Count: 29
-1: 66.612 ms
-2: 3843.044 ms
-3: 0.905 ms
-4: 2838.989 ms
+O(nW): 123.0
+Running time: 5.635 ms
+O(n^2 * v(aMax)): 123.0
+Running time: 1.614 ms
+Greedy: 123.0
+Running time: 0.457 ms
+FPTAS: 121.0
+Running time: 214.092 ms
 Count: 30
-1: 128.243 ms
-2: 5604.105 ms
-3: 0.903 ms
-4: 2566.873 ms
+O(nW): 52173.0
+Running time: 87.776 ms
+O(n^2 * v(aMax)): 51453.0
+Running time: 1051.818 ms
+Greedy: 52147.0
+Running time: 0.445 ms
+FPTAS: 51358.61783439491
+Running time: 399.576 ms
 Count: 31
-1: 358.394 ms
-2: 8029.297 ms
-3: 2.795 ms
-4: 2895.239 ms
+O(nW): 15751.0
+Running time: 448.953 ms
+O(n^2 * v(aMax)): 15662.0
+Running time: 277.897 ms
+Greedy: 15751.0
+Running time: 0.571 ms
+FPTAS: 15586.062814070352
+Running time: 799.245 ms
 Count: 32
-1: 77.811 ms
-2: 5106.125 ms
-3: 1.106 ms
-4: 3251.013 ms
+O(nW): 17086.0
+Running time: 47.523 ms
+O(n^2 * v(aMax)): 17086.0
+Running time: 501.781 ms
+Greedy: 17086.0
+Running time: 0.47 ms
+FPTAS: 16770.879888268155
+Running time: 581.235 ms
 Count: 33
-1: 81.938 ms
-2: 4776.942 ms
-3: 0.599 ms
-4: 1961.68 ms
+O(nW): 36683.0
+Running time: 155.993 ms
+O(n^2 * v(aMax)): 36683.0
+Running time: 1278.284 ms
+Greedy: 36586.0
+Running time: 0.547 ms
+FPTAS: 36239.96842105263
+Running time: 692.481 ms
 Count: 34
-1: 88.438 ms
-2: 5716.387 ms
-3: 0.817 ms
-4: 2692.87 ms
+O(nW): 4313.0
+Running time: 0.657 ms
+O(n^2 * v(aMax)): 4313.0
+Running time: 20.116 ms
+Greedy: 4313.0
+Running time: 0.621 ms
+FPTAS: 3626.08
+Running time: 1.291 ms
 Count: 35
-1: 79.797 ms
-2: 5847.464 ms
-3: 0.721 ms
-4: 2569.95 ms
+O(nW): 57469.0
+Running time: 89.03 ms
+O(n^2 * v(aMax)): 56821.0
+Running time: 736.395 ms
+Greedy: 57462.0
+Running time: 0.266 ms
+FPTAS: 56610.0
+Running time: 173.095 ms
 Count: 36
-1: 77.538 ms
-2: 5565.728 ms
-3: 1.531 ms
-4: 2956.629 ms
+O(nW): 8529.0
+Running time: 2.957 ms
+O(n^2 * v(aMax)): 8529.0
+Running time: 84.203 ms
+Greedy: 8440.0
+Running time: 0.117 ms
+FPTAS: 8005.99090909091
+Running time: 14.623 ms
 Count: 37
-1: 88.997 ms
-2: 5120.552 ms
-3: 0.763 ms
-4: 2268.727 ms
+O(nW): 3007.0
+Running time: 51.099 ms
+O(n^2 * v(aMax)): 3007.0
+Running time: 50.644 ms
+Greedy: 3005.0
+Running time: 0.169 ms
+FPTAS: 2921.1542056074763
+Running time: 115.105 ms
 Count: 38
-1: 108.116 ms
-2: 4580.342 ms
-3: 0.781 ms
-4: 2320.991 ms
+O(nW): 14850.0
+Running time: 5.406 ms
+O(n^2 * v(aMax)): 14359.0
+Running time: 66.433 ms
+Greedy: 14850.0
+Running time: 0.154 ms
+FPTAS: 13892.0
+Running time: 4.587 ms
 Count: 39
-1: 86.516 ms
-2: 5254.245 ms
-3: 0.61 ms
-4: 2836.69 ms
+O(nW): 22747.0
+Running time: 65.009 ms
+O(n^2 * v(aMax)): 22444.0
+Running time: 168.476 ms
+Greedy: 22746.0
+Running time: 0.154 ms
+FPTAS: 21840.875
+Running time: 28.358 ms
 Count: 40
-1: 93.809 ms
-2: 4343.132 ms
-3: 0.703 ms
-4: 2240.046 ms
+O(nW): 20454.0
+Running time: 58.959 ms
+O(n^2 * v(aMax)): 19950.0
+Running time: 412.439 ms
+Greedy: 20423.0
+Running time: 0.403 ms
+FPTAS: 19938.600000000002
+Running time: 158.487 ms
 Count: 41
-1: 81.904 ms
-2: 4770.706 ms
-3: 1.605 ms
-4: 3098.703 ms
+O(nW): 11218.0
+Running time: 10.985 ms
+O(n^2 * v(aMax)): 11218.0
+Running time: 250.999 ms
+Greedy: 11171.0
+Running time: 0.164 ms
+FPTAS: 10913.176767676767
+Running time: 88.829 ms
 Count: 42
-1: 85.692 ms
-2: 5197.83 ms
-3: 0.627 ms
-4: 2855.252 ms
+O(nW): 13675.0
+Running time: 0.213 ms
+O(n^2 * v(aMax)): 13229.0
+Running time: 38.156 ms
+Greedy: 13675.0
+Running time: 0.103 ms
+FPTAS: 12824.84375
+Running time: 2.937 ms
 Count: 43
-1: 67.373 ms
-2: 3890.213 ms
-3: 0.615 ms
-4: 1889.215 ms
+O(nW): 28560.0
+Running time: 78.148 ms
+O(n^2 * v(aMax)): 28560.0
+Running time: 606.996 ms
+Greedy: 28560.0
+Running time: 0.217 ms
+FPTAS: 28003.776978417267
+Running time: 247.951 ms
 Count: 44
-1: 67.877 ms
-2: 3856.073 ms
-3: 0.892 ms
-4: 2123.328 ms
+O(nW): 28626.0
+Running time: 116.276 ms
+O(n^2 * v(aMax)): 28626.0
+Running time: 676.463 ms
+Greedy: 28626.0
+Running time: 0.238 ms
+FPTAS: 28128.96103896104
+Running time: 387.51 ms
 Count: 45
-1: 70.411 ms
-2: 3849.353 ms
-3: 0.831 ms
-4: 1930.752 ms
+O(nW): 18352.0
+Running time: 92.037 ms
+O(n^2 * v(aMax)): 18063.0
+Running time: 172.482 ms
+Greedy: 18332.0
+Running time: 0.18 ms
+FPTAS: 17991.970297029704
+Running time: 92.845 ms
 Count: 46
-1: 77.398 ms
-2: 6351.169 ms
-3: 0.584 ms
-4: 2588.191 ms
+O(nW): 17124.0
+Running time: 21.547 ms
+O(n^2 * v(aMax)): 17124.0
+Running time: 131.567 ms
+Greedy: 17122.0
+Running time: 0.152 ms
+FPTAS: 16438.709677419356
+Running time: 21.959 ms
 Count: 47
-1: 77.418 ms
-2: 6521.894 ms
-3: 0.666 ms
-4: 5104.702 ms
+O(nW): 2467.0
+Running time: 7.684 ms
+O(n^2 * v(aMax)): 2467.0
+Running time: 15.109 ms
+Greedy: 2467.0
+Running time: 0.091 ms
+FPTAS: 2283.4
+Running time: 6.752 ms
 Count: 48
-1: 182.702 ms
-2: 7546.185 ms
-3: 0.588 ms
-4: 2819.428 ms
+O(nW): 37539.0
+Running time: 36.099 ms
+O(n^2 * v(aMax)): 37024.0
+Running time: 522.161 ms
+Greedy: 37539.0
+Running time: 0.194 ms
+FPTAS: 37010.523255813954
+Running time: 198.262 ms
 Count: 49
-1: 80.755 ms
-2: 6397.188 ms
-3: 0.565 ms
-4: 3460.631 ms
+O(nW): 43637.0
+Running time: 33.558 ms
+O(n^2 * v(aMax)): 43013.0
+Running time: 1517.394 ms
+Greedy: 43600.0
+Running time: 0.23 ms
+FPTAS: 43372.925257731964
+Running time: 735.324 ms
 Count: 50
-1: 86.428 ms
-2: 5026.633 ms
-3: 1.342 ms
-4: 2323.173 ms
+O(nW): 24431.0
+Running time: 21.553 ms
+O(n^2 * v(aMax)): 23710.0
+Running time: 225.944 ms
+Greedy: 24420.0
+Running time: 0.18 ms
+FPTAS: 23616.71052631579
+Running time: 41.026 ms
 Count: 51
-1: 86.867 ms
-2: 5002.074 ms
-3: 1.182 ms
-4: 2879.511 ms
+O(nW): 6401.0
+Running time: 5.025 ms
+O(n^2 * v(aMax)): 6401.0
+Running time: 122.34 ms
+Greedy: 6338.0
+Running time: 0.101 ms
+FPTAS: 5950.475806451613
+Running time: 21.493 ms
 Count: 52
-1: 132.319 ms
-2: 6001.079 ms
-3: 0.94 ms
-4: 3122.905 ms
+O(nW): 5156.0
+Running time: 0.502 ms
+O(n^2 * v(aMax)): 5074.0
+Running time: 11.951 ms
+Greedy: 5156.0
+Running time: 0.07 ms
+FPTAS: 4903.928571428572
+Running time: 0.687 ms
 Count: 53
-1: 79.931 ms
-2: 4082.43 ms
-3: 1.003 ms
-4: 1913.82 ms
+O(nW): 55933.0
+Running time: 18.719 ms
+O(n^2 * v(aMax)): 55933.0
+Running time: 1011.113 ms
+Greedy: 55908.0
+Running time: 0.152 ms
+FPTAS: 55032.482517482524
+Running time: 301.965 ms
 Count: 54
-1: 70.712 ms
-2: 3343.853 ms
-3: 0.988 ms
-4: 1613.925 ms
+O(nW): 14021.0
+Running time: 97.853 ms
+O(n^2 * v(aMax)): 13892.0
+Running time: 145.627 ms
+Greedy: 14008.0
+Running time: 0.116 ms
+FPTAS: 13864.556701030928
+Running time: 82.783 ms
 Count: 55
-1: 92.18 ms
-2: 6053.436 ms
-3: 2.721 ms
-4: 3439.058 ms
+O(nW): 69826.0
+Running time: 177.635 ms
+O(n^2 * v(aMax)): 69696.0
+Running time: 1251.255 ms
+Greedy: 69783.0
+Running time: 0.208 ms
+FPTAS: 68992.73885350318
+Running time: 446.827 ms
 Count: 56
-1: 97.394 ms
-2: 5162.787 ms
-3: 2.897 ms
-4: 3413.8 ms
+O(nW): 3719.0
+Running time: 1.866 ms
+O(n^2 * v(aMax)): 3719.0
+Running time: 65.837 ms
+Greedy: 3583.0
+Running time: 0.088 ms
+FPTAS: 3284.1
+Running time: 14.378 ms
 Count: 57
-1: 95.313 ms
-2: 5756.758 ms
-3: 0.811 ms
-4: 2893.899 ms
+O(nW): 254.0
+Running time: 0.077 ms
+O(n^2 * v(aMax)): 254.0
+Running time: 0.319 ms
+Greedy: 254.0
+Running time: 0.061 ms
+FPTAS: 165.85714285714286
+Running time: 0.086 ms
 Count: 58
-1: 92.18 ms
-2: 5546.635 ms
-3: 1.118 ms
-4: 3356.636 ms
+O(nW): 1677.0
+Running time: 5.267 ms
+O(n^2 * v(aMax)): 1677.0
+Running time: 58.704 ms
+Greedy: 1674.0
+Running time: 0.118 ms
+FPTAS: 1599.0309278350517
+Running time: 81.238 ms
 Count: 59
-1: 386.58 ms
-2: 7268.505 ms
-3: 4.849 ms
-4: 4164.446 ms
+O(nW): 11104.0
+Running time: 1.062 ms
+O(n^2 * v(aMax)): 10896.0
+Running time: 24.013 ms
+Greedy: 11059.0
+Running time: 0.085 ms
+FPTAS: 10200.0625
+Running time: 1.221 ms
 Count: 60
-1: 144.695 ms
-2: 6285.077 ms
-3: 0.789 ms
-4: 5380.233 ms
+O(nW): 27249.0
+Running time: 115.288 ms
+O(n^2 * v(aMax)): 27249.0
+Running time: 339.056 ms
+Greedy: 27233.0
+Running time: 0.122 ms
+FPTAS: 26968.132075471694
+Running time: 114.178 ms
 Count: 61
-1: 102.66 ms
-2: 6475.713 ms
-3: 2.249 ms
-4: 4522.759 ms
+O(nW): 10115.0
+Running time: 126.629 ms
+O(n^2 * v(aMax)): 10115.0
+Running time: 264.929 ms
+Greedy: 10101.0
+Running time: 0.181 ms
+FPTAS: 9973.02395209581
+Running time: 431.136 ms
 Count: 62
-1: 185.258 ms
-2: 8070.13 ms
-3: 1.022 ms
-4: 3068.198 ms
+O(nW): 43058.0
+Running time: 54.634 ms
+O(n^2 * v(aMax)): 43058.0
+Running time: 1311.886 ms
+Greedy: 43058.0
+Running time: 0.256 ms
+FPTAS: 42422.857142857145
+Running time: 339.866 ms
 Count: 63
-1: 113.112 ms
-2: 6406.735 ms
-3: 1.302 ms
-4: 3150.642 ms
+O(nW): 27676.0
+Running time: 34.422 ms
+O(n^2 * v(aMax)): 27676.0
+Running time: 1019.426 ms
+Greedy: 27650.0
+Running time: 0.138 ms
+FPTAS: 27005.172413793105
+Running time: 281.489 ms
 Count: 64
-1: 188.961 ms
-2: 5784.96 ms
-3: 1.343 ms
-4: 3161.102 ms
+O(nW): 4731.0
+Running time: 148.292 ms
+O(n^2 * v(aMax)): 4680.0
+Running time: 72.262 ms
+Greedy: 4731.0
+Running time: 0.178 ms
+FPTAS: 4704.2058823529405
+Running time: 332.543 ms
 Count: 65
-1: 142.377 ms
-2: 7587.765 ms
-3: 0.927 ms
-4: 3552.519 ms
+O(nW): 838.0
+Running time: 30.459 ms
+O(n^2 * v(aMax)): 830.0
+Running time: 8.569 ms
+Greedy: 838.0
+Running time: 0.126 ms
+FPTAS: 830.2368421052631
+Running time: 158.562 ms
 Count: 66
-1: 123.155 ms
-2: 8974.957 ms
-3: 2.527 ms
-4: 3914.978 ms
+O(nW): 45095.0
+Running time: 87.497 ms
+O(n^2 * v(aMax)): 45095.0
+Running time: 1551.175 ms
+Greedy: 45092.0
+Running time: 0.147 ms
+FPTAS: 44407.8550295858
+Running time: 448.701 ms
 Count: 67
-1: 117.157 ms
-2: 7966.033 ms
-3: 2.03 ms
-4: 3793.252 ms
+O(nW): 23895.0
+Running time: 59.729 ms
+O(n^2 * v(aMax)): 23895.0
+Running time: 282.46 ms
+Greedy: 23881.0
+Running time: 0.113 ms
+FPTAS: 23496.698113207545
+Running time: 111.66 ms
 Count: 68
-1: 149.61 ms
-2: 7154.885 ms
-3: 0.629 ms
-4: 2986.234 ms
+O(nW): 596.0
+Running time: 4.323 ms
+O(n^2 * v(aMax)): 596.0
+Running time: 56.125 ms
+Greedy: 596.0
+Running time: 0.148 ms
+FPTAS: 561.1231343283582
+Running time: 249.898 ms
 Count: 69
-1: 90.021 ms
-2: 4934.751 ms
-3: 1.271 ms
-4: 2668.454 ms
+O(nW): 17921.0
+Running time: 26.417 ms
+O(n^2 * v(aMax)): 17921.0
+Running time: 771.929 ms
+Greedy: 17921.0
+Running time: 0.143 ms
+FPTAS: 17276.729166666664
+Running time: 274.671 ms
 Count: 70
-1: 112.772 ms
-2: 8503.648 ms
-3: 5.992 ms
-4: 3874.051 ms
+O(nW): 60386.0
+Running time: 269.042 ms
+O(n^2 * v(aMax)): 60386.0
+Running time: 1420.817 ms
+Greedy: 60383.0
+Running time: 0.157 ms
+FPTAS: 59614.92307692308
+Running time: 753.769 ms
 Count: 71
-1: 91.379 ms
-2: 7119.004 ms
-3: 4.648 ms
-4: 4230.147 ms
+O(nW): 8296.0
+Running time: 7.342 ms
+O(n^2 * v(aMax)): 8296.0
+Running time: 44.649 ms
+Greedy: 8296.0
+Running time: 0.091 ms
+FPTAS: 8127.141025641025
+Running time: 5.592 ms
 Count: 72
-1: 265.072 ms
-2: 6747.344 ms
-3: 1.33 ms
-4: 3090.934 ms
+O(nW): 12098.0
+Running time: 10.077 ms
+O(n^2 * v(aMax)): 12098.0
+Running time: 99.775 ms
+Greedy: 12065.0
+Running time: 0.1 ms
+FPTAS: 11604.296875
+Running time: 23.157 ms
 Count: 73
-1: 135.468 ms
-2: 5878.426 ms
-3: 0.975 ms
-4: 3637.578 ms
+O(nW): 11018.0
+Running time: 59.108 ms
+O(n^2 * v(aMax)): 11018.0
+Running time: 191.007 ms
+Greedy: 11018.0
+Running time: 0.171 ms
+FPTAS: 10860.979310344828
+Running time: 282.734 ms
 Count: 74
-1: 276.077 ms
-2: 6738.956 ms
-3: 1.23 ms
-4: 3351.025 ms
+O(nW): 1357.0
+Running time: 24.794 ms
+O(n^2 * v(aMax)): 1357.0
+Running time: 19.659 ms
+Greedy: 1351.0
+Running time: 0.108 ms
+FPTAS: 1305.9157894736843
+Running time: 77.427 ms
 Count: 75
-1: 192.142 ms
-2: 6616.972 ms
-3: 1.007 ms
-4: 3730.9 ms
+O(nW): 9466.0
+Running time: 121.828 ms
+O(n^2 * v(aMax)): 9313.0
+Running time: 112.197 ms
+Greedy: 9466.0
+Running time: 0.115 ms
+FPTAS: 9379.802884615385
+Running time: 103.358 ms
 Count: 76
-1: 156.878 ms
-2: 7121.637 ms
-3: 0.994 ms
-4: 3218.738 ms
+O(nW): 8451.0
+Running time: 58.564 ms
+O(n^2 * v(aMax)): 8451.0
+Running time: 184.184 ms
+Greedy: 8435.0
+Running time: 0.147 ms
+FPTAS: 8316.848484848486
+Running time: 464.141 ms
 Count: 77
-1: 93.19 ms
-2: 5203.778 ms
-3: 3.524 ms
-4: 2968.972 ms
+O(nW): 674.0
+Running time: 16.579 ms
+O(n^2 * v(aMax)): 674.0
+Running time: 12.127 ms
+Greedy: 674.0
+Running time: 0.12 ms
+FPTAS: 663.6521739130435
+Running time: 138.24 ms
 Count: 78
-1: 95.136 ms
-2: 5013.934 ms
-3: 1.465 ms
-4: 2266.95 ms
+O(nW): 50634.0
+Running time: 44.866 ms
+O(n^2 * v(aMax)): 50634.0
+Running time: 2244.113 ms
+Greedy: 50585.0
+Running time: 0.16 ms
+FPTAS: 49947.05699481865
+Running time: 728.196 ms
 Count: 79
-1: 112.876 ms
-2: 6525.842 ms
-3: 3.899 ms
-4: 3383.724 ms
+O(nW): 363.0
+Running time: 0.082 ms
+O(n^2 * v(aMax)): 363.0
+Running time: 0.107 ms
+Greedy: 363.0
+Running time: 0.054 ms
+FPTAS: 190.0
+Running time: 0.055 ms
 Count: 80
-1: 160.416 ms
-2: 7149.371 ms
-3: 3.035 ms
-4: 3466.06 ms
+O(nW): 0.0
+Running time: 0.038 ms
+O(n^2 * v(aMax)): 0.0
+Running time: 0.073 ms
+Greedy: 0.0
+Running time: 0.047 ms
+FPTAS: 0.0
+Running time: 0.043 ms
 Count: 81
-1: 93.523 ms
-2: 8827.973 ms
-3: 1.631 ms
-4: 3823.107 ms
+O(nW): 7509.0
+Running time: 1.942 ms
+O(n^2 * v(aMax)): 7509.0
+Running time: 77.936 ms
+Greedy: 7509.0
+Running time: 0.121 ms
+FPTAS: 7351.011235955056
+Running time: 77.564 ms
 Count: 82
-1: 114.716 ms
-2: 8672.054 ms
-3: 0.948 ms
-4: 4655.133 ms
+O(nW): 37028.0
+Running time: 3.13 ms
+O(n^2 * v(aMax)): 36726.0
+Running time: 886.809 ms
+Greedy: 37028.0
+Running time: 0.177 ms
+FPTAS: 36546.46153846154
+Running time: 743.453 ms
 Count: 83
-1: 152.533 ms
-2: 7582.057 ms
-3: 3.72 ms
-4: 3706.478 ms
+O(nW): 23269.0
+Running time: 14.098 ms
+O(n^2 * v(aMax)): 23269.0
+Running time: 317.974 ms
+Greedy: 23243.0
+Running time: 0.104 ms
+FPTAS: 22668.95061728395
+Running time: 65.34 ms
 Count: 84
-1: 114.322 ms
-2: 5630.356 ms
-3: 4.647 ms
-4: 2897.454 ms
+O(nW): 9730.0
+Running time: 30.733 ms
+O(n^2 * v(aMax)): 9730.0
+Running time: 566.655 ms
+Greedy: 9730.0
+Running time: 0.157 ms
+FPTAS: 9548.455958549222
+Running time: 728.156 ms
 Count: 85
-1: 130.738 ms
-2: 8003.677 ms
-3: 0.948 ms
-4: 3514.74 ms
+O(nW): 17499.0
+Running time: 4.924 ms
+O(n^2 * v(aMax)): 17499.0
+Running time: 196.169 ms
+Greedy: 17478.0
+Running time: 0.113 ms
+FPTAS: 17107.38
+Running time: 90.976 ms
 Count: 86
-1: 186.416 ms
-2: 6684.66 ms
-3: 1.057 ms
-4: 2623.539 ms
+O(nW): 4996.0
+Running time: 3.151 ms
+O(n^2 * v(aMax)): 4996.0
+Running time: 682.887 ms
+Greedy: 4969.0
+Running time: 0.147 ms
+FPTAS: 4916.43113772455
+Running time: 530.36 ms
 Count: 87
-1: 95.991 ms
-2: 6690.896 ms
-3: 0.663 ms
-4: 3439.553 ms
+O(nW): 3222.0
+Running time: 21.793 ms
+O(n^2 * v(aMax)): 3222.0
+Running time: 159.37 ms
+Greedy: 3211.0
+Running time: 0.134 ms
+FPTAS: 3132.9595588235293
+Running time: 263.091 ms
 Count: 88
-1: 124.052 ms
-2: 6320.132 ms
-3: 1.325 ms
-4: 4353.08 ms
+O(nW): 28670.0
+Running time: 397.231 ms
+O(n^2 * v(aMax)): 28424.0
+Running time: 592.583 ms
+Greedy: 28670.0
+Running time: 0.162 ms
+FPTAS: 28418.021739130436
+Running time: 632.779 ms
 Count: 89
-1: 146.282 ms
-2: 9619.391 ms
-3: 0.774 ms
-4: 2434.893 ms
+O(nW): 1142.0
+Running time: 8.919 ms
+O(n^2 * v(aMax)): 1131.0
+Running time: 19.471 ms
+Greedy: 1142.0
+Running time: 0.384 ms
+FPTAS: 1130.0
+Running time: 316.646 ms
 Count: 90
-1: 146.07 ms
-2: 10221.598 ms
-3: 1.208 ms
-4: 6435.221 ms
+O(nW): 613.0
+Running time: 0.122 ms
+O(n^2 * v(aMax)): 316.0
+Running time: 0.17 ms
+Greedy: 613.0
+Running time: 0.056 ms
+FPTAS: 263.3333333333333
+Running time: 0.059 ms
 Count: 91
-1: 142.352 ms
-2: 10581.282 ms
-3: 1.63 ms
-4: 7123.673 ms
+O(nW): 76929.0
+Running time: 359.699 ms
+O(n^2 * v(aMax)): 76382.0
+Running time: 1699.373 ms
+Greedy: 76918.0
+Running time: 0.157 ms
+FPTAS: 75953.89528795812
+Running time: 703.337 ms
 Count: 92
-1: 164.822 ms
-2: 7863.49 ms
-3: 0.937 ms
-4: 3900.224 ms
+O(nW): 35.0
+Running time: 0.13 ms
+O(n^2 * v(aMax)): 25.0
+Running time: 0.081 ms
+Greedy: 31.0
+Running time: 0.053 ms
+FPTAS: 25.0
+Running time: 0.088 ms
 Count: 93
-1: 108.687 ms
-2: 9250.145 ms
-3: 0.948 ms
-4: 4074.711 ms
+O(nW): 25671.0
+Running time: 39.943 ms
+O(n^2 * v(aMax)): 25135.0
+Running time: 310.249 ms
+Greedy: 25660.0
+Running time: 0.115 ms
+FPTAS: 25279.34693877551
+Running time: 86.945 ms
 Count: 94
-1: 96.675 ms
-2: 5359.082 ms
-3: 1.033 ms
-4: 2692.158 ms
+O(nW): 21470.0
+Running time: 21.957 ms
+O(n^2 * v(aMax)): 21470.0
+Running time: 127.714 ms
+Greedy: 21443.0
+Running time: 0.113 ms
+FPTAS: 20654.084745762713
+Running time: 18.148 ms
 Count: 95
-1: 84.17 ms
-2: 4516.727 ms
-3: 0.903 ms
-4: 2065.493 ms
+O(nW): 40943.0
+Running time: 137.683 ms
+O(n^2 * v(aMax)): 40943.0
+Running time: 1159.955 ms
+Greedy: 40894.0
+Running time: 0.145 ms
+FPTAS: 40437.5
+Running time: 492.417 ms
 Count: 96
-1: 94.163 ms
-2: 4759.316 ms
-3: 1.641 ms
-4: 2801.017 ms
+O(nW): 38083.0
+Running time: 62.927 ms
+O(n^2 * v(aMax)): 37618.0
+Running time: 405.533 ms
+Greedy: 38083.0
+Running time: 0.118 ms
+FPTAS: 37593.41203703704
+Running time: 130.152 ms
 Count: 97
-1: 85.558 ms
-2: 5949.522 ms
-3: 0.745 ms
-4: 2646.326 ms
+O(nW): 370.0
+Running time: 0.093 ms
+O(n^2 * v(aMax)): 370.0
+Running time: 421.911 ms
+Greedy: 370.0
+Running time: 0.126 ms
+FPTAS: 366.40625
+Running time: 81.048 ms
 Count: 98
-1: 92.423 ms
-2: 6493.606 ms
-3: 0.846 ms
-4: 2590.911 ms
+O(nW): 5707.0
+Running time: 2.787 ms
+O(n^2 * v(aMax)): 5707.0
+Running time: 51.226 ms
+Greedy: 5669.0
+Running time: 0.084 ms
+FPTAS: 5238.829787234043
+Running time: 8.173 ms
 Count: 99
-1: 120.554 ms
-2: 5654.697 ms
-3: 2.751 ms
-4: 3257.536 ms
+O(nW): 1675.0
+Running time: 0.76 ms
+O(n^2 * v(aMax)): 1675.0
+Running time: 5.092 ms
+Greedy: 1675.0
+Running time: 0.067 ms
+FPTAS: 1634.3653846153845
+Running time: 1.476 ms
 Count: 100
-1: 112.727 ms
-2: 8098.836 ms
-3: 1.258 ms
-4: 3796.923 ms
-Count: 101
-1: 105.492 ms
-2: 7111.669 ms
-3: 0.865 ms
-4: 2816.347 ms
-Count: 102
-1: 81.399 ms
-2: 4194.218 ms
-3: 0.628 ms
-4: 3545.909 ms
-Count: 103
-1: 167.538 ms
-2: 6548.827 ms
-3: 1.545 ms
-4: 3504.792 ms
-Count: 104
-1: 297.305 ms
-2: 11755.812 ms
-3: 1.005 ms
-4: 3474.033 ms
-Count: 105
-1: 125.303 ms
-2: 8202.842 ms
-3: 3.236 ms
-4: 4050.814 ms
-Count: 106
-1: 105.149 ms
-2: 5966.367 ms
-3: 4.751 ms
-4: 4329.006 ms
-Count: 107
-1: 141.862 ms
-2: 7223.866 ms
-3: 0.635 ms
-4: 4344.194 ms
-Count: 108
-1: 128.901 ms
-2: 6857.601 ms
-3: 5.144 ms
-4: 3173.808 ms
-Count: 109
-1: 93.895 ms
-2: 5044.27 ms
-3: 1.064 ms
-4: 3057.989 ms
-Count: 110
-1: 142.689 ms
-2: 8102.163 ms
-3: 0.656 ms
-4: 4149.827 ms
-Count: 111
-1: 180.18 ms
-2: 7224.029 ms
-3: 2.946 ms
-4: 5251.874 ms
-Count: 112
-1: 155.377 ms
-2: 8570.749 ms
-3: 5.23 ms
-4: 4125.407 ms
-Count: 113
-1: 154.742 ms
-2: 8687.383 ms
-3: 3.551 ms
-4: 3871.894 ms
-Count: 114
-1: 131.966 ms
-2: 5714.763 ms
-3: 3.207 ms
-4: 3018.261 ms
-Count: 115
-1: 115.642 ms
-2: 5179.978 ms
-3: 1.0 ms
-4: 3245.066 ms
-Count: 116
-1: 124.892 ms
-2: 4529.274 ms
-3: 0.708 ms
-4: 2304.275 ms
-Count: 117
-1: 111.517 ms
-2: 5950.926 ms
-3: 1.064 ms
-4: 2832.474 ms
-Count: 118
-1: 133.209 ms
-2: 6385.39 ms
-3: 0.801 ms
-4: 3466.351 ms
-Count: 119
-1: 117.527 ms
-2: 6711.357 ms
-3: 29.157 ms
-4: 3084.352 ms
-Count: 120
-1: 110.982 ms
-2: 6620.545 ms
-3: 1.594 ms
-4: 4062.658 ms
-Count: 121
-1: 95.328 ms
-2: 6560.066 ms
-3: 3.483 ms
-4: 3152.283 ms
-Count: 122
-1: 103.779 ms
-2: 6345.112 ms
-3: 4.53 ms
-4: 3177.139 ms
-Count: 123
-1: 157.555 ms
-2: 7732.572 ms
-3: 3.087 ms
-4: 3648.434 ms
-Count: 124
-1: 85.934 ms
-2: 6539.982 ms
-3: 4.075 ms
-4: 3277.735 ms
-Count: 125
-1: 129.975 ms
-2: 7717.004 ms
-3: 1.348 ms
-4: 4254.133 ms
-Count: 126
-1: 136.633 ms
-2: 6924.435 ms
-3: 0.869 ms
-4: 3570.684 ms
-Count: 127
-1: 172.137 ms
-2: 8964.889 ms
-3: 1.195 ms
-4: 4113.097 ms
-Count: 128
-1: 110.152 ms
-2: 7062.568 ms
-3: 1.308 ms
-4: 3419.317 ms
-Count: 129
-1: 121.942 ms
-2: 7974.562 ms
-3: 2.359 ms
-4: 3840.356 ms
-Count: 130
-1: 219.187 ms
-2: 6033.907 ms
-3: 0.77 ms
-4: 4733.133 ms
-Count: 131
-1: 114.804 ms
-2: 6668.713 ms
-3: 5.497 ms
-4: 2866.315 ms
-Count: 132
-1: 146.628 ms
-2: 7376.875 ms
-3: 5.678 ms
-4: 4047.255 ms
-Count: 133
-1: 152.897 ms
-2: 8646.408 ms
-3: 0.808 ms
-4: 3470.512 ms
-Count: 134
-1: 121.458 ms
-2: 14530.209 ms
-3: 1.253 ms
-4: 4488.762 ms
-Count: 135
-1: 95.885 ms
-2: 8129.818 ms
-3: 1.641 ms
-4: 3873.513 ms
-Count: 136
-1: 101.288 ms
-2: 5125.531 ms
-3: 1.046 ms
-4: 2433.416 ms
-Count: 137
-1: 99.377 ms
-2: 5113.404 ms
-3: 0.529 ms
-4: 2393.66 ms
-Count: 138
-1: 95.177 ms
-2: 5700.517 ms
-3: 0.575 ms
-4: 2925.543 ms
-Count: 139
-1: 89.314 ms
-2: 5948.136 ms
-3: 1.687 ms
-4: 5868.073 ms
-Count: 140
-1: 192.444 ms
-2: 9841.471 ms
-3: 6.86 ms
-4: 4514.286 ms
-Count: 141
-1: 101.677 ms
-2: 6649.31 ms
-3: 1.058 ms
-4: 3302.201 ms
-Count: 142
-1: 83.521 ms
-2: 5696.621 ms
-3: 1.343 ms
-4: 2685.768 ms
-Count: 143
-1: 103.889 ms
-2: 6660.362 ms
-3: 2.588 ms
-4: 2884.203 ms
-Count: 144
-1: 92.37 ms
-2: 5866.291 ms
-3: 0.764 ms
-4: 2884.267 ms
-Count: 145
-1: 85.068 ms
-2: 4539.42 ms
-3: 7.614 ms
-4: 2391.2 ms
-Count: 146
-1: 109.238 ms
-2: 4681.58 ms
-3: 1.166 ms
-4: 2612.279 ms
-Count: 147
-1: 86.951 ms
-2: 5087.543 ms
-3: 2.68 ms
-4: 2389.908 ms
-Count: 148
-1: 105.382 ms
-2: 4623.859 ms
-3: 0.792 ms
-4: 2357.294 ms
-Count: 149
-1: 88.883 ms
-2: 4805.718 ms
-3: 0.829 ms
-4: 2394.82 ms
-Count: 150
-1: 86.267 ms
-2: 4560.841 ms
-3: 0.831 ms
-4: 2469.102 ms
-Count: 151
-1: 87.076 ms
-2: 4773.138 ms
-3: 0.504 ms
-4: 2324.732 ms
-Count: 152
-1: 90.459 ms
-2: 4571.371 ms
-3: 0.7 ms
-4: 2343.299 ms
-Count: 153
-1: 92.365 ms
-2: 6224.133 ms
-3: 0.627 ms
-4: 3823.699 ms
-Count: 154
-1: 136.936 ms
-2: 7099.601 ms
-3: 1.341 ms
-4: 8215.201 ms
-Count: 155
-1: 189.705 ms
-2: 16940.26 ms
-3: 0.861 ms
-4: 5232.463 ms
-Count: 156
-1: 118.018 ms
-2: 7356.144 ms
-3: 0.788 ms
-4: 4880.894 ms
-Count: 157
-1: 203.773 ms
-2: 12028.076 ms
-3: 0.61 ms
-4: 5509.871 ms
-Count: 158
-1: 191.552 ms
-2: 10680.965 ms
-3: 0.762 ms
-4: 4301.389 ms
-Count: 159
-1: 130.487 ms
-2: 4299.243 ms
-3: 0.698 ms
-4: 2036.148 ms
-Count: 160
-1: 89.006 ms
-2: 4871.684 ms
-3: 1.055 ms
-4: 2555.855 ms
-Count: 161
-1: 90.831 ms
-2: 4953.284 ms
-3: 0.636 ms
-4: 2320.941 ms
-Count: 162
-1: 90.108 ms
-2: 4724.924 ms
-3: 1.188 ms
-4: 2408.877 ms
-Count: 163
-1: 75.814 ms
-2: 3539.278 ms
-3: 1.044 ms
-4: 1719.032 ms
-Count: 164
-1: 94.675 ms
-2: 5464.513 ms
-3: 0.75 ms
-4: 2768.644 ms
-Count: 165
-1: 105.535 ms
-2: 4932.084 ms
-3: 0.559 ms
-4: 2396.974 ms
-Count: 166
-1: 93.136 ms
-2: 4849.595 ms
-3: 0.961 ms
-4: 2323.541 ms
-Count: 167
-1: 85.211 ms
-2: 4874.206 ms
-3: 1.587 ms
-4: 2408.272 ms
-Count: 168
-1: 90.4 ms
-2: 4812.545 ms
-3: 0.656 ms
-4: 2380.341 ms
-Count: 169
-1: 79.718 ms
-2: 4306.235 ms
-3: 0.713 ms
-4: 1994.939 ms
-Count: 170
-1: 89.805 ms
-2: 4752.513 ms
-3: 1.172 ms
-4: 2525.228 ms
-Count: 171
-1: 102.709 ms
-2: 5596.605 ms
-3: 0.901 ms
-4: 2742.768 ms
-Count: 172
-1: 102.931 ms
-2: 4680.759 ms
-3: 1.081 ms
-4: 2377.943 ms
-Count: 173
-1: 96.474 ms
-2: 5637.452 ms
-3: 1.411 ms
-4: 2725.52 ms
-Count: 174
-1: 91.827 ms
-2: 4817.813 ms
-3: 0.713 ms
-4: 2390.336 ms
-Count: 175
-1: 76.891 ms
-2: 3389.548 ms
-3: 0.976 ms
-4: 1654.326 ms
-Count: 176
-1: 83.078 ms
-2: 4645.008 ms
-3: 1.439 ms
-4: 2314.711 ms
-Count: 177
-1: 89.5 ms
-2: 4408.001 ms
-3: 0.602 ms
-4: 2085.394 ms
-Count: 178
-1: 88.743 ms
-2: 6099.976 ms
-3: 1.111 ms
-4: 5158.606 ms
-Count: 179
-1: 168.754 ms
-2: 6413.821 ms
-3: 1.124 ms
-4: 3054.686 ms
-Count: 180
-1: 103.619 ms
-2: 8836.375 ms
-3: 2.417 ms
-4: 3245.908 ms
-Count: 181
-1: 96.154 ms
-2: 6399.097 ms
-3: 0.94 ms
-4: 2794.054 ms
-Count: 182
-1: 100.138 ms
-2: 5206.922 ms
-3: 0.509 ms
-4: 2490.293 ms
-Count: 183
-1: 77.399 ms
-2: 4123.077 ms
-3: 1.177 ms
-4: 2035.726 ms
-Count: 184
-1: 90.813 ms
-2: 4867.1 ms
-3: 0.697 ms
-4: 2465.822 ms
-Count: 185
-1: 115.609 ms
-2: 6269.551 ms
-3: 0.596 ms
-4: 2853.01 ms
-Count: 186
-1: 89.524 ms
-2: 4950.309 ms
-3: 2.767 ms
-4: 2482.154 ms
-Count: 187
-1: 81.445 ms
-2: 4207.52 ms
-3: 0.933 ms
-4: 2004.251 ms
-Count: 188
-1: 81.772 ms
-2: 4147.641 ms
-3: 0.977 ms
-4: 2043.111 ms
-Count: 189
-1: 84.574 ms
-2: 5146.279 ms
-3: 12.054 ms
-4: 2482.145 ms
-Count: 190
-1: 90.359 ms
-2: 3364.636 ms
-3: 1.021 ms
-4: 1677.376 ms
-Count: 191
-1: 115.137 ms
-2: 4930.659 ms
-3: 1.028 ms
-4: 2364.95 ms
-Count: 192
-1: 95.742 ms
-2: 4528.406 ms
-3: 0.897 ms
-4: 2813.693 ms
-Count: 193
-1: 88.12 ms
-2: 4815.792 ms
-3: 0.711 ms
-4: 2286.925 ms
-Count: 194
-1: 119.62 ms
-2: 5360.968 ms
-3: 0.472 ms
-4: 2692.833 ms
-Count: 195
-1: 82.664 ms
-2: 5615.943 ms
-3: 1.104 ms
-4: 2469.385 ms
-Count: 196
-1: 126.853 ms
-2: 5450.029 ms
-3: 0.961 ms
-4: 2730.647 ms
-Count: 197
-1: 117.836 ms
-2: 7715.147 ms
-3: 0.8 ms
-4: 3842.952 ms
-Count: 198
-1: 113.555 ms
-2: 5066.239 ms
-3: 0.634 ms
-4: 2480.49 ms
-Count: 199
-1: 88.458 ms
-2: 5251.707 ms
-3: 0.828 ms
-4: 2781.293 ms
+O(nW): 3978.0
+Running time: 11.58 ms
+O(n^2 * v(aMax)): 3978.0
+Running time: 43.732 ms
+Greedy: 3978.0
+Running time: 0.136 ms
+FPTAS: 3881.287878787879
+Running time: 93.389 ms

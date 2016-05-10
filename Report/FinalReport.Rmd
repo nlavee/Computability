@@ -89,7 +89,7 @@ summary(KnapsackRes$Greedy.Value)
 summary(KnapsackRes$FPTAS.Value)
 ```
   
-From the statistical summary, we see that Greedy has the highest mean while FPTAS has the lowest mean. However, the differences are small with the scale of the number that we see.  
+From the statistical summary, we see that DP1 has the highest mean while FPTAS has the lowest mean. However, the differences are small with the scale of the number that we see.  
 
 Below is the graph plotting the returned values for each instances. The color indicates which algorithms is being used. At the same time, there's a trend line indicating the trend of values for each algorithm. 
 
@@ -136,7 +136,7 @@ summary(KnapsackRes$FPTAS.Running.Time)
 
 As expected, Greedy has the lowest mean of running time, indicating that it runs the fatest out of all other algorithm. However, DP1 is not the slowest algorithm. Instead, the slowest was DP2. The mean of running time for FPTAS is roughly half of that of DP2.  
 
-Below is the graphs of running time for different instances. There is again a smooth line to indicate the general trend of all the instances. Noticing the difference on the y-axis, which indicates the running time in ms, we can see that Greedy runs in the range below 3ms, while DP2 runs in the range 2000, or 2 seconds. FPTAS has a higher upper bound for running time compared to DP1. FPTAS and DP2 graphs are very similar in terms of trend line shape, despite the differences in scale on the y-axis. This is somewhat expected as FPTAS implements DP2 as part of its algorithm. From this graph alone, we know that Greedy would have the best running time. It is, however, interesting to see that for the early instances, the running time of Greedy spike a lot compared to the rest of the instances while we hardly notice a difference in the graphs for DP1, DP2, and FPTAS. The lack of differences might be attributes to the scale on the y-axis, where a slight change in running time will stand out more in Greedy graphs compared to others.   
+Below is the graphs of running time for different instances. There is again a smooth line to indicate the general trend of all the instances. Noticing the difference on the y-axis, which indicates the running time in ms, we can see that Greedy runs in the range below 10ms, while DP2 runs in the range 3000, or 3 seconds. FPTAS has a higher upper bound for running time compared to DP1. FPTAS and DP2 graphs are very similar in terms of trend line shape, despite the differences in scale on the y-axis. This is somewhat expected as FPTAS implements DP2 as part of its algorithm. From this graph alone, we know that Greedy would have the best running time. It is, however, interesting to see that for the early instances, the running time of Greedy spike a lot compared to the rest of the instances while we hardly notice a difference in the graphs for DP1, DP2, and FPTAS. The lack of differences might be attributes to the scale on the y-axis, where a slight change in running time will stand out more in Greedy graphs compared to others.   
 
 ```{r, echo=FALSE, message=FALSE}
 dp1_rt <- ggplot(KnapsackRes, aes(count, DP1.Running.Time)) + geom_point() + geom_smooth() + 
@@ -164,7 +164,20 @@ ggplot(KnapsackRes) +
   labs(title ="Running time for different algorithms", colour = "Algorithms")
 ```
 
-From the graph, we can see clearly that Greedy stands out as having the most of it running time in the lower spectrum of the graphs. This aligns with our expectation that this would have the best running time. DP1 running time at the same time does not span as much as the DP2 and FPTAS. DP1 also show a higher concentration of running time in the lower spectrum of the graphs while DP2 and FPTAS seems to have somewhat a straight line going through the spectrum.  
+From the graph, we can see clearly that Greedy stands out as having the most of it running time in the lower spectrum of the graphs. This aligns with our expectation that this would have the best running time. The rest of the algoirthms are hard to see so here are the densities for DP1, DP2 and FPTAS.  
+
+```{r echo=FALSE, message=FALSE, warning=FALSE}
+## Density of running time
+ggplot(KnapsackRes) +
+  geom_density(aes(DP1.Running.Time, colour="DP1.Running.Time")) + 
+  geom_density(aes(DP2.Running.Time, colour="DP2.Running.Time")) + 
+  geom_density(aes(FPTAS.Running.Time, colour = "FPTAS.Running.Time")) +
+  xlab("Running Time (ms)") + 
+  xlim(0, 1300) +
+  labs(title ="Running time for different algorithms", colour = "Algorithms")
+```
+
+From this graph, we see that most of DP1 running time is in the lowest spectrum. The running time of DP2 and FPTAS is very similar to one another, though, DP2 has more instances running at more than 1000ms. From this, we can see that the running time is best with Greedy, followed by DP1, FPTAS and then DP2.    
 
 # IV. Reduction For 3SAT #
 
@@ -199,7 +212,7 @@ summary(ReductionRes$Greedy.Running.Time)
 summary(ReductionRes$FPTAS.Running.Time)
 ```
  
-Again, we see that Greed has the lowest mean of running time at 1.63 ms. DP2 and FPTAS still have the two highest running time as with the previous experiments.    
+We see that Greed has the lowest mean of running time at 11.330 ms. DP2 and FPTAS still have the two highest running time as with the previous experiments.    
 
 Below are graphs of the running time of the instances with the trend lines in each graph.  
 
@@ -215,7 +228,7 @@ fptas_rt <- ggplot(ReductionRes, aes(count, FPTAS.Running.Time)) + geom_point() 
 grid.arrange(dp1_rt, dp2_rt, greedy_rt, fptas_rt)
 ```
 
-Again, we see that the range of running time for Greedy is much slower than the rest of the algorithms with all instances running below 300ms. DP1 has the range of below 400 ms.  
+Again, we see that the range of running time for Greedy is much slower than the rest of the algorithms with all instances running below 600ms. DP1 has the range of below 4500 ms.  
 
 Below is the density graphs for the running time of the four algorithms with our 200 instances. This graphs gives us information on how the running time is distributed among the testing instances. Since there is such a disparity between the distribution of running time between Greedy and DP2 and FPTAS, I decided to take the log scale of the running time of each instances.  
 

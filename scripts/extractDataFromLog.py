@@ -4,7 +4,8 @@ import csv
 f = open('/Users/AnhVuNguyen/Documents/workspace/ComputabilityComplexityAndHeuristics/log/Computability.log', 'r')
 
 ## Write to csv file
-csvfile = open('/Users/AnhVuNguyen/Documents/workspace/ComputabilityComplexityAndHeuristics/data/res.csv', 'wb')
+csvfile = open('/Users/AnhVuNguyen/Documents/workspace/ComputabilityComplexityAndHeuristics/data/knapsack_res.csv', 'w')
+
 ## Write headers
 fieldnames = ['count', 'DP1 Value', 'DP1 Running Time', 'DP2 Value', 'DP2 Running Time', 'Greedy Value', 'Greedy Running Time', 'FPTAS Value', 'FPTAS Running Time']
 writer = csv.DictWriter(csvfile, fieldnames=fieldnames)
@@ -48,6 +49,7 @@ for i in range(0, len(lines)):
 			FPTASRunningTime = FPTAS[14:].strip()
 			print FPTASRunningTime
 
+			print({'count': count, 'DP1 Value': DP1Value, 'DP1 Running Time':DP1RunningTime, 'DP2 Value':DP2Value, 'DP2 Running Time':DP2RunningTime, 'Greedy Value':GreedyValue, 'Greedy Running Time':GreedyRunningTime, 'FPTAS Value':FPTASValue, 'FPTAS Running Time':FPTASRunningTime})
 			writer.writerow({'count': count, 'DP1 Value': DP1Value, 'DP1 Running Time':DP1RunningTime, 'DP2 Value':DP2Value, 'DP2 Running Time':DP2RunningTime, 'Greedy Value':GreedyValue, 'Greedy Running Time':GreedyRunningTime, 'FPTAS Value':FPTASValue, 'FPTAS Running Time':FPTASRunningTime})
 			i = i + 8
 
