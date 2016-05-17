@@ -8,7 +8,7 @@ Here are the descriptions for the content of each folder in this project in orde
 * **log**: This contains the log generated from the experiments.  
 * **scripts**: This contains Python scripts that I used to parse log files into csv so that I can effectively use it for statistical analysis.  
 * **data**: This contains the csv file that is parsed for the use of statistical analysis. There are also two .RData files which are the data used to generate the report, also saved for references in R if needed.  
-* **Report**: This contains the actual reports for the experiments as well as the Data Analysis R script that is used for analysis exploration. FinalReport.Rmd is the file that is used to generate the pdf of the report. There is also .RData file which is used to load data into the report for the R environment.  
+* **Report**: This contains the actual reports for the experiments as well as the Data Analysis R script that is used for analysis exploration. FinalReport.Rmd is the file that is used to generate the pdf of the report. There is also .RData file which is used to load data into the report for the R environment. The final report is found [here](Report/FinalReport.pdf) 
 
 ## Contacts ##
 My mail: [vu.nguyen@skidmore.edu](mailto:vu.nguyen@skidmore.edu)
